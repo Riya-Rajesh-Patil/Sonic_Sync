@@ -12,6 +12,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -36,16 +37,47 @@ public class Main extends Application {
     static HashSet<BookingHistoryItem> bookings = new HashSet<BookingHistoryItem>();
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
-        stg = primaryStage;
-        primaryStage.setResizable(false);
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        Scene scene = new Scene(root);
-        primaryStage.setTitle("Event Booking System");
-        primaryStage.setScene(scene);
-        primaryStage.sizeToScene();
-        primaryStage.show();
+    public void start(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+
+        try {
+            // Load the loader screen
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Loader.fxml"));
+            AnchorPane root = loader.load();
+            Scene scene = new Scene(root);
+
+            // Set and display the loader screen
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("EventHive - Loading...");
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+    
+//    @Override
+//    public void start(Stage primaryStage) throws IOException {
+//        stg = primaryStage;
+//        primaryStage.setResizable(false);
+//        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+//        Scene scene = new Scene(root);
+//        primaryStage.setTitle("Event Booking System");
+//        primaryStage.setScene(scene);
+//        primaryStage.sizeToScene();
+//        primaryStage.show();
+//    }
+    public static void switchToLogin() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/application/Login.fxml"));
+            BorderPane root = loader.load(); // Updated to match the root layout type in FXML
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     // Method 'changeScene()' allows any FXML window to be opened, integrated within the application window
     public void changeScene(String fxml) throws IOException {
