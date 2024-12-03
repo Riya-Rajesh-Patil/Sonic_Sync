@@ -31,8 +31,8 @@ public class EventSendEmail { // Controller class that sends an email to the use
     static void sendEmail(String recipient, String type) {
 
         // Initializes 'username' and 'password' variables that cannot be reassigned
-        final String username = "eventbooking@gmail.com";
-        final String password = "qledjhlwaarkvvjc";
+        final String username = "sonicsyncevents@gmail.com";
+        final String password = "SonicSync@2024";
 
         /* JavaMail Properties is used to set in the session objects and to create the session object.
          * SMTP - Simple Mail Transfer Protocol is used */
@@ -77,7 +77,7 @@ public class EventSendEmail { // Controller class that sends an email to the use
             mimeMultipart.addBodyPart(pdfBodyPart);
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("eventbooking@gmail.com"));
+            message.setFrom(new InternetAddress("sonicsyncevents@gmail.com"));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
 
             if (type.equals("confirmation")) {
@@ -135,7 +135,7 @@ public class EventSendEmail { // Controller class that sends an email to the use
         codeQrImage.scaleAbsolute(200, 200);
         document.add(codeQrImage);
 
-        Image img = Image.getInstance("./Images/eventLogo.png");
+        Image img = Image.getInstance("./Images/PCR Logo.png");
         img.scaleAbsolute(180f, 179.5f);
         img.setAbsolutePosition(4, 22);
         document.add(img);
