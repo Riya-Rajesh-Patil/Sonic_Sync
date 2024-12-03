@@ -63,11 +63,11 @@ public class SignUp {
                             "[a-zA-Z0-9_+&*-]+)*@" +
                             "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
                             "A-Z]{2,7}$";
-        Pattern pat = Pattern.compile(emailRegex);
+        Pattern pattern = Pattern.compile(emailRegex);
         if (email == null) {
             return false;
         }
-        return pat.matcher(email).matches();
+        return pattern.matcher(email).matches();
     }
 
     public static boolean isValidPassword(String password) {

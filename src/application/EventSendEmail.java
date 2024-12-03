@@ -31,8 +31,8 @@ public class EventSendEmail { // Controller class that sends an email to the use
     static void sendEmail(String recipient, String type) {
 
         // Initializes 'username' and 'password' variables that cannot be reassigned
-        final String username = "eventbooking@gmail.com";
-        final String password = "qledjhlwaarkvvjc";
+        final String sonic_sync_Email = "sonicsyncevents@gmail.com";
+        final String sonic_sync_Password = "SonicSync@2024";
 
         /* JavaMail Properties is used to set in the session objects and to create the session object.
          * SMTP - Simple Mail Transfer Protocol is used */
@@ -44,13 +44,13 @@ public class EventSendEmail { // Controller class that sends an email to the use
         props.put("mail.smtp.ssl.protocols", "TLSv1.2");
 
         // Creates 'Session' object that provides access to JavaMail Protocols
-        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+        Session mailSession = Session.getInstance(props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password);
+                return new PasswordAuthentication(sonic_sync_Email, sonic_sync_Password);
             }
         });
 
-        ByteArrayOutputStream outputStream = null;
+        ByteArrayOutputStream pdfStream = null;
 
         // Store the message content in the 'String' variable 'content'
         String content = "Hello " + EventConfirmation.name + ",\n\n" +
@@ -60,41 +60,41 @@ public class EventSendEmail { // Controller class that sends an email to the use
                 + EventConfirmation.finalTime + "!\n\nEnjoy the event!\n\nAdmin\nCEO of Event Booking System";
 
         try {
-            MimeBodyPart textBodyPart = new MimeBodyPart();
-            textBodyPart.setText(content);
+            MimeBodyPart textPart = new MimeBodyPart();
+            textPart.setText(content);
 
-            outputStream = new ByteArrayOutputStream();
-            writePdf(outputStream); // Calls the 'writePdf()' method
-            byte[] bytes = outputStream.toByteArray();
+            pdfStream = new ByteArrayOutputStream();
+            writePdf(pdfStream); // Calls the 'writePdf()' method
+            byte[] bytes = pdfStream.toByteArray();
 
-            DataSource dataSource = new ByteArrayDataSource(bytes, "application/pdf");
-            MimeBodyPart pdfBodyPart = new MimeBodyPart();
-            pdfBodyPart.setDataHandler(new DataHandler(dataSource));
-            pdfBodyPart.setFileName("BookingConfirmation.pdf");
+            DataSource pdfDataSource = new ByteArrayDataSource(bytes, "application/pdf");
+            MimeBodyPart pdfPart = new MimeBodyPart();
+            pdfPart.setDataHandler(new DataHandler(pdfDataSource));
+            pdfPart.setFileName("BookingConfirmation.pdf");
 
-            MimeMultipart mimeMultipart = new MimeMultipart();
-            mimeMultipart.addBodyPart(textBodyPart);
-            mimeMultipart.addBodyPart(pdfBodyPart);
+            MimeMultipart emailContent = new MimeMultipart();
+            emailContent.addBodyPart(textPart);
+            emailContent.addBodyPart(pdfPart);
 
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("eventbooking@gmail.com"));
-            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+            Message emailMessage = new MimeMessage(mailSession);
+            emailMessage.setFrom(new InternetAddress("eventbooking@gmail.com"));
+            emailMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
 
             if (type.equals("confirmation")) {
-                message.setSubject(EventConfirmation.bookingId + " - Booking Confirmation for " + Main.getSelectedEventTitle());
-                message.setContent(mimeMultipart);
+            	emailMessage.setSubject(EventConfirmation.bookingId + " - Booking Confirmation for " + Main.getSelectedEventTitle());
+            	emailMessage.setContent(emailContent);
             }
 
-            Transport.send(message);
+            Transport.send(emailMessage);
 
         } catch (Exception e) {
             throw new RuntimeException(e);
 
         } finally {
-            if (outputStream != null) {
+            if (pdfStream != null) {
                 try {
-                    outputStream.close();
-                    outputStream = null;
+                	pdfStream.close();
+                	pdfStream = null;
                 } catch (Exception ex) {
                 }
             }
@@ -103,43 +103,42 @@ public class EventSendEmail { // Controller class that sends an email to the use
 
     // Method 'writePdf' creates the 'BookingConfirmation.pdf' to be emailed to the user
     public static void writePdf(OutputStream outputStream) throws Exception {
-        Font title = FontFactory.getFont(FontFactory.HELVETICA, 36f, Font.BOLD);
-        Font subtitle = FontFactory.getFont(FontFactory.HELVETICA, 16f, Font.BOLD);
-        Font italics = FontFactory.getFont(FontFactory.HELVETICA, 12f, Font.ITALIC);
+        Font titleFont = FontFactory.getFont(FontFactory.HELVETICA, 36f, Font.BOLD);
+  
 
-        Document document = new Document();
-        PdfWriter.getInstance(document, outputStream);
+        Document pdfDocument = new Document();
+        PdfWriter.getInstance(pdfDocument, outputStream);
 
-        document.open();
+        pdfDocument.open();
 
-        document.addTitle("Booking Confirmation PDF");
-        document.addSubject("Receipt PDF");
-        document.addAuthor("Admin");
-        document.addCreator("Event Booking System");
+        pdfDocument.addTitle("Booking Confirmation PDF");
+        pdfDocument.addSubject("Receipt PDF");
+        pdfDocument.addAuthor("Admin");
+        pdfDocument.addCreator("Event Booking System");
 
-        Paragraph paragraph = new Paragraph();
-        paragraph.add(new Chunk("Your Booking Receipt\n\n", title));
-        paragraph.add(new Chunk("Booking ID: " + EventConfirmation.bookingId + "\n" +
+        Paragraph receiptContent = new Paragraph();
+        receiptContent.add(new Chunk("Your Booking Receipt\n\n", titleFont));
+        receiptContent.add(new Chunk("Booking ID: " + EventConfirmation.bookingId + "\n" +
                 "Event: " + Main.getSelectedEventTitle() + "\n" +
                 "Screen: " + EventBooking.screenNum + "\n" +
                 "Date: " + EventConfirmation.finalDate + "\n" +
                 "Time: " + EventConfirmation.finalTime + "\n" +
                 "Tickets: " + EventBooking.adultTickets + " x Adult, " + EventBooking.childTickets + " x Child, " +
                 EventBooking.seniorTickets + " x Senior\n" +
-                "Seats: " + EventSeatBooking.userSeats + "\n" +
-                "VIP: " + EventConfirmation.vipConf + "\n\n" +
+                "Seats: " + EventSeatBooking.user_selected_Seats + "\n" +
+                "VIP: " + EventConfirmation.vipConference + "\n\n" +
                 "Total Payment: $" + String.format("%.2f", EventBooking.total) + "\n\n"));
 
-        BarcodeQRCode barcodeQRCode = new BarcodeQRCode("Valid Booking - " + EventConfirmation.bookingId, 1000, 1000, null);
-        Image codeQrImage = barcodeQRCode.getImage();
-        codeQrImage.scaleAbsolute(200, 200);
-        document.add(codeQrImage);
+        BarcodeQRCode qrCode = new BarcodeQRCode("Valid Booking - " + EventConfirmation.bookingId, 1000, 1000, null);
+        Image qrCodeImage = qrCode.getImage();
+        qrCodeImage.scaleAbsolute(250, 250);
+        pdfDocument.add(qrCodeImage);
 
         Image img = Image.getInstance("./Images/eventLogo.png");
         img.scaleAbsolute(180f, 179.5f);
         img.setAbsolutePosition(4, 22);
-        document.add(img);
+        pdfDocument.add(img);
 
-        document.close();
+        pdfDocument.close();
     }
 }

@@ -49,11 +49,20 @@ public class EventBooking {
     @FXML
     private ImageView selectedEventPoster;
 
+
+    
     public static double total = 0.00;
-    public static int adultTickets = 0, childTickets = 0, seniorTickets = 0;
-    private double adultPrice = 8.50, childPrice = 5.00, seniorPrice = 7.50, vip = 2.00;
+    public static int adultTickets = 0;
+    public static int childTickets = 0;
+    public static int seniorTickets = 0;
+    private double adultPrice = 8.50;
+    private double childPrice = 5.00;
+    private double seniorPrice = 7.50;
+    private double vip = 2.00;
     public static boolean isVip = false;
-    public static String screenNum = "", date = "", time = "";
+    public static String screenNum = "";
+    public static String date = "";
+    public static String time = "";
 
     String selectedEvent = "";
     File imgFile = null;

@@ -29,7 +29,7 @@ import javafx.stage.FileChooser;
 
 public class EventManagement {
 
-    private File selectedImage;
+    private File image_Selected;
 
     @FXML
     private Button backButton, homeButton, uploadImageButton, viewEventsButton, addEventButton;
@@ -163,11 +163,11 @@ public class EventManagement {
     @FXML
     public void uploadImage(ActionEvent event) throws IOException {
         try {
-            FileChooser fc = new FileChooser();
-            selectedImage = fc.showOpenDialog(null);
-            if (selectedImage == null) {
+            FileChooser file = new FileChooser();
+            image_Selected = file.showOpenDialog(null);
+            if (image_Selected == null) {
                 return;
-            } else if (ImageIO.read(selectedImage) == null) {
+            } else if (ImageIO.read(image_Selected) == null) {
                 Alert alert = new Alert(AlertType.WARNING, "Please upload an image in JPG or PNG format!",
                         ButtonType.OK);
                 alert.showAndWait();
@@ -175,8 +175,8 @@ public class EventManagement {
                     return;
                 }
             } else {
-                Image img = SwingFXUtils.toFXImage(ImageIO.read(selectedImage), null);
-                uploadedEventPoster.setImage(img);
+                Image image = SwingFXUtils.toFXImage(ImageIO.read(image_Selected), null);
+                uploadedEventPoster.setImage(image);
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -188,17 +188,17 @@ public class EventManagement {
         try {
             validateEventInput();
 
-            FileWriter fw = new FileWriter("events.txt", true);
-            fw.write(newEventTitle.getText() + ";" + newEventDescription.getText() + ";" + eventTrailer.getText() + ";" +
+            FileWriter filewriter = new FileWriter("events.txt", true);
+            filewriter.write(newEventTitle.getText() + ";" + newEventDescription.getText() + ";" + eventTrailer.getText() + ";" +
                      newEventStartDate.getText() + ";" + newEventEndDate.getText() + ";" + newEventTime1.getText() + ";" +
                      newEventTime2.getText() + ";" + newEventTime3.getText() + ";" + newEventAge.getText() + ";" +
                      newEventRating.getText() + "\n");
-            fw.close();
+            filewriter.close();
 
             String folderPath = "./Images/eventImages";
             File uploads = new File(folderPath);
             File file = new File(uploads, eventTitle.getText() + ".png");
-            InputStream input = Files.newInputStream(selectedImage.toPath());
+            InputStream input = Files.newInputStream(image_Selected.toPath());
             Files.copy(input, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
             Alert alert = new Alert(AlertType.INFORMATION, "The event " + eventTitle.getText() + " has been added!",
@@ -227,11 +227,11 @@ public class EventManagement {
     void validateEventInput() throws InvalidEventInputException, ParseException {
         try {
             if (eventTitle.getText().equals("") || eventDescription.getText().equals("") ||
-                eventTrailer.getText().equals("") || eventStartDate.getValue().equals("dd/MM/yyyy") ||
-                eventEndDate.getValue().equals("dd/MM/yyyy") || eventAge.getValue().equals("") ||
+                eventTrailer.getText().equals("") || eventAge.getValue().equals("") ||
+                eventStartDate.getValue().equals("dd/MM/yyyy") || eventEndDate.getValue().equals("dd/MM/yyyy") ||
                 eventRating.getText().equals("")) {
                 throw new InvalidEventInputException("Please complete all fields!");
-            } else if (selectedImage == null) {
+            } else if (image_Selected == null) {
                 throw new InvalidEventInputException("Please add the event poster!");
             } else if (eventStartDate.getValue().compareTo(LocalDate.now()) < 0) {
                 throw new InvalidEventInputException("Start date cannot be before today!");

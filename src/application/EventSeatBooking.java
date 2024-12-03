@@ -24,12 +24,13 @@ public class EventSeatBooking {
     public static boolean[] eventBookings = new boolean[24];
     public static boolean[] booked;
 
-    private int maxSeats = (EventBooking.adultTickets + EventBooking.childTickets + EventBooking.seniorTickets);
-    private int numberOfSeats = 0;
-    public static String userSeats = "";
+    private int maximum_Seats = (EventBooking.adultTickets +EventBooking.seniorTickets+EventBooking.childTickets);
+    private int noOfSeats = 0;
+    
 
     private boolean rotatedPane = false;
-    public static boolean seatsSelected = false;
+    public static boolean selected_Seats = false;
+    public static String user_selected_Seats = "";
 
     @FXML
     private Text eventName, totalTickets, totalPrice;
@@ -44,7 +45,7 @@ public class EventSeatBooking {
         initialiseArray();
         setUpSeats();
         eventName.setText(Main.getSelectedEventTitle());
-        totalTickets.setText("" + maxSeats);
+        totalTickets.setText("" + maximum_Seats);
         totalPrice.setText("$" + String.format("%.2f", EventBooking.total));
     }
 
@@ -56,8 +57,8 @@ public class EventSeatBooking {
 
                 seats[i].setOnAction(event -> { // Using a lambda expression as an action listener
                     if (booked[finalI1] == false) { // IF the seat is selected...
-                        if (numberOfSeats < maxSeats) {
-                            numberOfSeats++;
+                        if (noOfSeats < maximum_Seats) {
+                        	noOfSeats++;
                             seats[finalI1].setStyle("-fx-background-color:  #23b33b"); // GREEN colour
                             setBookedSeats(seats[finalI1], true);
                         } else { // Outputs error message
@@ -67,17 +68,19 @@ public class EventSeatBooking {
                                 return;
                             }
                         }
-                    } else if (booked[finalI1] == true) { // IF the user unselects a seat...
-                        numberOfSeats--; // Subtracts 1 from the number of selected seats
-                        seats[finalI1].setStyle("-fx-background-color:  #edf0f4"); // GREY colour
+                    } else if (booked[finalI1] == true) {
+                    	 // IF the user un-selects a seat
+                    	noOfSeats--; // Subtracts from the number of selected seats
+                        seats[finalI1].setStyle("-fx-background-color:  #edf0f4");
                         setBookedSeats(seats[finalI1], false);
                     }
                     popSeat(seats[finalI1]);
                 });
-            } else if (eventBookings[i] == true) { // IF the seat is unavailable...
-                seats[i].setStyle("-fx-background-color:  #e40606"); // RED colour
-                int finalI = i;
-                seats[i].setOnAction(event -> rotateButton(seats[finalI]));
+            } else if (eventBookings[i] == true) { 
+            	// IF the seat is unavailable...
+                seats[i].setStyle("-fx-background-color:  #e40606"); 
+                int finals = i;
+                seats[i].setOnAction(event -> rotateButton(seats[finals]));
             }
         }
     }
@@ -184,9 +187,11 @@ public class EventSeatBooking {
     }
 
     public void goToConfirmation(ActionEvent event) throws IOException {
-        if (numberOfSeats == maxSeats) {
-            seatsSelected = true;
-            userSeats = selectedSeats.getText();
+        if (noOfSeats == maximum_Seats) {
+        	
+        	selected_Seats = true;
+            user_selected_Seats = selectedSeats.getText();
+            
             Main m = new Main();
             m.changeScene("Confirmation Page.fxml");
         } else {

@@ -36,10 +36,18 @@ public class EventConfirmation implements Initializable {
     @FXML
     Button homeButton, emailButton;
 
-    String selectedEvent = "", date = "", time = "";
-    File imgFile = null;
+    String event_chosen = "";
+    String date = "";
+    String time = "";
 
-    public static String name = "", finalDate = "", finalTime = "", vipConf = "";
+    File image_File = null;
+
+   
+    public static String name = "";
+    public static String finalDate = "";
+    public static String finalTime = "";
+    public static String vipConference = "";
+    
     public static int min = 0;
     public static int max = 9999;
     public static int id = (int) Math.floor(Math.random() * (max - min + 1) + min);
@@ -47,7 +55,9 @@ public class EventConfirmation implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    	
         selectedEventTitle.setText(Main.getSelectedEventTitle());
+        
         email.setText(Login.getCurrentUser());
         screen.setText(EventBooking.screenNum);
         seats.setText(EventSeatBooking.userSeats);
@@ -65,14 +75,15 @@ public class EventConfirmation implements Initializable {
         // Checks if the user selected VIP seating.
         if (EventBooking.isVip) {
             isVip.setText("Yes");
-            vipConf = "Yes";
+            vipConference = "Yes";
         } else {
             isVip.setText("No");
-            vipConf = "No";
+            vipConference = "No";
         }
+        
         total.setText("$" + String.format("%.2f", EventBooking.total));
         String email = Login.getCurrentUser();
-        selectedEvent = Main.getSelectedEventTitle();
+        event_chosen = Main.getSelectedEventTitle();
 
         try {
             FileReader fr = new FileReader("Registration details.txt");
@@ -89,8 +100,8 @@ public class EventConfirmation implements Initializable {
             }
             fr.close();
             String path = "./Images/eventImages/";
-            imgFile = new File(path + selectedEvent + ".png");
-            Image img = SwingFXUtils.toFXImage(ImageIO.read(imgFile), null);
+            image_File = new File(path + event_chosen + ".png");
+            Image img = SwingFXUtils.toFXImage(ImageIO.read(image_File), null);
             selectedEventPoster.setImage(img);
         } catch (IOException e) {
             e.printStackTrace();

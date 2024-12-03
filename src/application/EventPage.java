@@ -25,8 +25,9 @@ import javafx.scene.text.Text;
 
 public class EventPage implements Initializable {
 
-    String selectedEvent = "";
-    File imgFile = null;
+	 File imageFile = null;
+    String event_Selected = "";
+   
     Desktop desktop = Desktop.getDesktop();
 
     @FXML
@@ -58,14 +59,14 @@ public class EventPage implements Initializable {
         if (Main.isOrganizer()) {
             bookButton.setText("SEE BOOKINGS");
         }
-        selectedEvent = Main.getSelectedEventTitle();
+        event_Selected = Main.getSelectedEventTitle();
         try {
-            FileReader fr = new FileReader("./events.txt");
-            BufferedReader br = new BufferedReader(fr);
-            String line = br.readLine();
+            FileReader filereader = new FileReader("./events.txt");
+            BufferedReader bufferedreader = new BufferedReader(filereader);
+            String line = bufferedreader.readLine();
             while (line != null) {
                 String[] data = line.split(";");
-                if (data[0].equals(selectedEvent)) {
+                if (data[0].equals(event_Selected)) {
                     title.setText(data[0]);
                     description.setText(data[1]);
                     startDate.setText(data[3]);
@@ -74,12 +75,12 @@ public class EventPage implements Initializable {
                     age.setText(data[8]);
                     rating.setText(data[9]);
                 }
-                line = br.readLine();
+                line = bufferedreader.readLine();
             }
 
             String path = "./Images/eventImages/";
-            imgFile = new File(path + selectedEvent + ".png");
-            Image img = SwingFXUtils.toFXImage(ImageIO.read(imgFile), null);
+            imageFile = new File(path + event_Selected + ".png");
+            Image img = SwingFXUtils.toFXImage(ImageIO.read(imageFile), null);
             selectedEventPoster.setImage(img);
         } catch (IOException e) {
             e.printStackTrace();
@@ -94,15 +95,15 @@ public class EventPage implements Initializable {
                 FileReader fr = new FileReader("events.txt");
                 BufferedReader br = new BufferedReader(fr);
                 String line = br.readLine();
-                String trailer = "";
+                String event_preview = "";
                 while (line != null) {
                     String[] data = line.split(";");
-                    if (data[0].equals(selectedEvent)) {
-                        trailer = data[2];
+                    if (data[0].equals(event_Selected)) {
+                    	event_preview = data[2];
                     }
                     line = br.readLine();
                 }
-                desktop.browse(new URI(trailer));
+                desktop.browse(new URI(event_preview));
             } catch (IOException | URISyntaxException e) {
                 e.printStackTrace();
             }
@@ -111,7 +112,7 @@ public class EventPage implements Initializable {
 
     @FXML
     public void deleteEvent(ActionEvent event) throws IOException {
-        selectedEvent = Main.getSelectedEventTitle();
+    	event_Selected = Main.getSelectedEventTitle();
 
         Alert alert = new Alert(AlertType.CONFIRMATION, "Do you want to delete this event?", ButtonType.NO, ButtonType.YES);
         alert.showAndWait();
@@ -129,7 +130,7 @@ public class EventPage implements Initializable {
                 }
             }
 
-            imgFile.delete();
+            imageFile.delete();
 
             String tempFile = "temp.txt";
             File oldFile = new File("events.txt");
@@ -147,7 +148,7 @@ public class EventPage implements Initializable {
 
             while ((currentLine = br.readLine()) != null) {
                 data = currentLine.split(";");
-                if (!(data[0].equals(selectedEvent))) {
+                if (!(data[0].equals(event_Selected))) {
                     pw.println(currentLine);
                 }
             }
