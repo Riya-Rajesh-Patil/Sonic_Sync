@@ -1,10 +1,14 @@
 package application;
 
-import java.util.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -15,97 +19,147 @@ public class Login {
 
     @FXML
     private Button loginBtn;
+
     @FXML
     private Label invalidEntry;
+
     @FXML
     private TextField email;
+
     @FXML
     private PasswordField password;
+
     @FXML
     private Hyperlink regLink;
 
-    static String currentUser = "";
+    // To store the currently logged-in user's email
+    private static String currentUser = "";
 
-    public void userLogin(ActionEvent event) throws IOException {
-        checkLogin();
+    /**
+     * Handles the login button click
+     */
+    public void userLogin(ActionEvent event) {
+        try {
+            System.out.println("Attempting login...");
+            checkLogin();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error during login process.");
+        }
     }
 
-    // When the 'Sign up here' Hyperlink is pressed, it transitions to the 'Sign Up.fxml' page
-    public void goToReg(ActionEvent event) throws IOException {
-        Main m = new Main();
-        m.changeScene("Sign Up.fxml");
+    /**
+     * Handles the registration hyperlink click, switches to the Sign-Up page
+     */
+    public void goToReg(ActionEvent event) {
+        try {
+            System.out.println("Navigating to the Sign-Up page...");
+            System.out.println("Loading FXML: /application/SignUp Page.fxml");
+            System.out.println("Resolved URL: " + getClass().getResource("/application/SignUp Page.fxml"));
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/SignUp Page.fxml"));
+            Parent pane = loader.load();
+
+            // Use the primary stage from Main
+            if (Main.getStage() == null) {
+                System.out.println("Main's primary stage is null.");
+                return;
+            }
+
+            Main.getStage().getScene().setRoot(pane);
+            Main.getStage().sizeToScene();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Failed to load the Sign-Up page.");
+        }
     }
 
-    // Method 'checkLogin()' checks the login details of the user
-    @SuppressWarnings("unused")
+    /**
+     * Checks the login details and transitions to the appropriate page
+     */
     private void checkLogin() throws IOException {
-        Main m = new Main();
+        if (email.getText().isEmpty() || password.getText().isEmpty()) {
+            handleEmptyFields();
+            return;
+        }
 
-        // IF the user is an organizer, the program transitions to the 'Organizer Home.fxml' page
-        if (email.getText().toString().equals("eventbooking@gmail.com") && password.getText().toString().equals("123456")) {
+        String loginEmail = email.getText();
+        String loginPswd = password.getText();
+
+        // Check for predefined organizer login
+        if ("pcrcinemas@gmail.com".equals(loginEmail) && "123456".equals(loginPswd)) {
             Main.setOrganizerMode(true);
-            m.changeScene("Organizer Home.fxml");
+            switchToScene("Organizer Home Page.fxml");
+            return;
         }
-        // (...)
 
-        // ELSE IF any of the entry fields are empty, an error message is displayed
-        else if (email.getText().isEmpty() || password.getText().isEmpty()) {
-            if (email.getText().isEmpty() && password.getText().isEmpty()) {
-                invalidEntry.setText("*Please enter email and password.*");
-            } else if (email.getText().isEmpty()) {
-                invalidEntry.setText("*Please enter email.*");
-            } else if (password.getText().isEmpty()) {
-                invalidEntry.setText("*Please enter password.*");
-            }
-
+        // Validate against the Registration details file
+        if (validateCredentials(loginEmail, loginPswd)) {
+            currentUser = loginEmail;
+            switchToScene("View Events.fxml");
+        } else {
+            invalidEntry.setText("*Invalid email or password*");
         }
-        // ELSE checks the user's details against the values in the 'Registration details.txt' file
-        else {
-            // Retrieves the user inputted details from the text fields and stores them in variables
-            String loginEmail = email.getText();
-            String loginPswd = password.getText();
+    }
 
-            // Stores the file path in the String variable 'filepath'
-            String filepath = "./Registration details.txt";
+    /**
+     * Handles empty email or password fields
+     */
+    private void handleEmptyFields() {
+        if (email.getText().isEmpty() && password.getText().isEmpty()) {
+            invalidEntry.setText("*Please enter email and password.*");
+        } else if (email.getText().isEmpty()) {
+            invalidEntry.setText("*Please enter email.*");
+        } else if (password.getText().isEmpty()) {
+            invalidEntry.setText("*Please enter password.*");
+        }
+    }
 
-            // Creates FileReader and BufferedReader to read the file
-            BufferedReader br = new BufferedReader(new FileReader(filepath));
-            // Creates LinkedLists to store email and passwords
-            LinkedList<String> emails = new LinkedList<String>();
-            LinkedList<String> passwords = new LinkedList<String>();
-            String line = br.readLine(); // Reads the first line of the file
-            while (line != null) { // WHILE loop to iterate through the lines of the file
-                String[] data = line.split(";"); // Assigns a semi-colon as the data delimiter
-                // Adds data values to their respective lists
-                String emailData = data[2];
-                String pswdData = data[3];
-                emails.add(emailData);
-                passwords.add(pswdData);
-                line = br.readLine(); // Reads the next line
-            }
-            br.close(); // Closes BufferedReader
-
-            // Iterates through LinkedLists to authenticate the email and password
-            int userPos = 0;
-            for (int i = 0; i < emails.size(); i++) {
-                if (emails.get(i).equals(loginEmail) && passwords.get(i).equals(loginPswd)) {
-                    userPos = i;
-                    currentUser = loginEmail;
-                    m.changeScene("View Events.fxml");
-                } else {
-                    invalidEntry.setText("*Invalid email or password*");
+    /**
+     * Validates the email and password against the registration details file
+     * @return true if the credentials are valid, false otherwise
+     */
+    private boolean validateCredentials(String loginEmail, String loginPswd) {
+        String filepath = "./Registration details.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(filepath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(";");
+                if (data.length > 3 && loginEmail.equals(data[2]) && loginPswd.equals(data[3])) {
+                    return true;
                 }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error reading the registration details file.");
+        }
+        return false;
+    }
 
+    /**
+     * Switches to a new scene
+     */
+    private void switchToScene(String fxmlFile) {
+        try {
+            System.out.println("Switching to: " + fxmlFile);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/" + fxmlFile));
+            Parent pane = loader.load();
+
+            // Use the primary stage from Main
+            Main.getStage().getScene().setRoot(pane);
+            Main.getStage().sizeToScene();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to load: " + fxmlFile);
         }
     }
 
-    static void setCurrentUser(String currentUser) {
-        Login.currentUser = currentUser;
-    }
-
-    static String getCurrentUser() {
+    // Getter and Setter for the current user
+    public static String getCurrentUser() {
         return currentUser;
     }
 
+    public static void setCurrentUser(String currentUser) {
+        Login.currentUser = currentUser;
+    }
 }

@@ -12,13 +12,13 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="446.0" prefWidth="643.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SignUp">
+<BorderPane prefHeight="446.0" prefWidth="643.0" style="-fx-background-color: #FFF8E1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SignUp">
    <left>
       <AnchorPane prefHeight="419.0" prefWidth="331.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="351.0" fitWidth="354.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Images/PCR Logo.png" />
+                  <Image url="@../../Images/EventHiveLogo.png" />
                </image>
             </ImageView>
             <Label layoutX="14.0" layoutY="380.0" prefHeight="51.0" prefWidth="304.0" text="**NOTE: Passwords must be 8-20 characters long with at least one number, lowercase letter, uppercase letter, and special character. Also, no white spaces." textFill="#798da3" wrapText="true">
@@ -38,57 +38,57 @@
                   <Font name="System Bold" size="21.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="44.0" prefHeight="51.0" prefWidth="272.0" text="Create your account to manage your event bookings with ease!" textFill="#798da3" wrapText="true">
+            <Label layoutX="14.0" layoutY="44.0" prefHeight="51.0" prefWidth="272.0" text="Create your account to manage your event bookings with ease!" textFill="#1C2A38" wrapText="true">
                <font>
                   <Font name="Microsoft YaHei Light" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="17.0" layoutY="70.0" text="Your Name:" textFill="#3b4754" wrapText="true">
+            <Label layoutX="17.0" layoutY="70.0" text="Your Name:" textFill="#1C2A38" wrapText="true">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="16.0" layoutY="133.0" text="Email Address:" textFill="#3b4754" wrapText="true">
+            <Label layoutX="16.0" layoutY="133.0" text="Email Address:" textFill="#1C2A38" wrapText="true">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="22.0" layoutY="190.0" text="Password:" textFill="#3b4754" wrapText="true">
+            <Label layoutX="22.0" layoutY="190.0" text="Password:" textFill="#1C2A38" wrapText="true">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="15.0" layoutY="246.0" text="Confirm Password:" textFill="#3b4754" wrapText="true">
+            <Label layoutX="15.0" layoutY="246.0" text="Confirm Password:" textFill="#1C2A38" wrapText="true">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="fname" layoutX="16.0" layoutY="99.0" prefHeight="25.0" prefWidth="127.0" promptText="First name">
+            <TextField fx:id="firstNameField" layoutX="16.0" layoutY="99.0" prefHeight="25.0" prefWidth="127.0" promptText="First name">
                <font>
                   <Font name="Microsoft YaHei Light" size="12.0" />
                </font>
             </TextField>
-            <TextField fx:id="reg_email" layoutX="16.0" layoutY="156.0" prefHeight="25.0" prefWidth="265.0" promptText="example@email.com">
+            <TextField fx:id="regEmailField" layoutX="16.0" layoutY="156.0" prefHeight="25.0" prefWidth="265.0" promptText="example@email.com">
                <font>
                   <Font name="Microsoft YaHei Light" size="12.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="reg_pswd" layoutX="17.0" layoutY="211.0" prefHeight="25.0" prefWidth="266.0" promptText="Password">
+            <PasswordField fx:id="regPasswordField" layoutX="17.0" layoutY="211.0" prefHeight="25.0" prefWidth="266.0" promptText="Password">
                <font>
                   <Font name="Microsoft YaHei Light" size="12.0" />
                </font>
             </PasswordField>
-            <PasswordField fx:id="confirm_pswd" layoutX="16.0" layoutY="268.0" prefHeight="25.0" prefWidth="265.0" promptText="Enter password">
+            <PasswordField fx:id="confirmPasswordField" layoutX="16.0" layoutY="268.0" prefHeight="25.0" prefWidth="265.0" promptText="Enter password">
                <font>
                   <Font name="Microsoft YaHei Light" size="12.0" />
                </font>
             </PasswordField>
-            <Button fx:id="signupBtn" layoutX="104.0" layoutY="356.0" mnemonicParsing="false" onAction="#userReg" prefHeight="37.0" prefWidth="92.0" style="-fx-background-color: #29323d;" text="SIGN UP" textFill="WHITE">
+            <Button fx:id="signupButton" layoutX="104.0" layoutY="356.0" mnemonicParsing="false" onAction="#userReg" prefHeight="37.0" prefWidth="92.0" style="linear-gradient(#FFEB3B, #FFC107); -fx-text-fill: #1C2A38;" text="SIGN UP" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <TextField fx:id="sname" layoutX="150.0" layoutY="99.0" prefHeight="25.0" prefWidth="127.0" promptText="Surname">
+            <TextField fx:id="lastNameField" layoutX="150.0" layoutY="99.0" prefHeight="25.0" prefWidth="127.0" promptText="Surname">
                <font>
                   <Font name="Microsoft YaHei Light" size="12.0" />
                </font>
@@ -103,7 +103,7 @@
                   <Font name="Microsoft YaHei Light" size="12.0" />
                </font>
             </Hyperlink>
-            <Label fx:id="errorMsg" layoutX="19.0" layoutY="303.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="263.0" textFill="CRIMSON" wrapText="true">
+            <Label fx:id="errorMessage" layoutX="19.0" layoutY="303.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="263.0" textFill="CRIMSON" wrapText="true">
                <font>
                   <Font name="Microsoft YaHei Light" size="12.0" />
                </font>

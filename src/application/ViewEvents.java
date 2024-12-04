@@ -103,14 +103,10 @@ public class ViewEvents implements Initializable {
         grid.getChildren().addAll(pic);
 
         pic.setOnMouseClicked(e -> {
-            try {
-                Main.setSelectedEventTitle(id);
-                // storing the selected event to customize the newly created scene
-                Main m = new Main();
-                m.changeScene("Event Page.fxml");
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            Main.setSelectedEventTitle(id);
+			// storing the selected event to customize the newly created scene
+			Main m = new Main();
+			m.changeScene("Event Page.fxml");
         });
     }
 
