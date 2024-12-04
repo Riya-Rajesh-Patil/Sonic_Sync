@@ -15,23 +15,16 @@
    <top>
       <AnchorPane prefHeight="47.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="60.0" stroke="#edf0f4" strokeType="INSIDE" width="805.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffeb3b" height="60.0" stroke="#edf0f4" strokeType="INSIDE" width="805.0" />
             <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="13.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Images/EventHiveLogo.png" />
                </image>
             </ImageView>
-            <Button fx:id="homeButton" layoutX="741.0" layoutY="6.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goHome" prefHeight="39.0" prefWidth="43.0" style="-fx-background-color: #edf0f4;" textFill="#29323d">
+            <Button fx:id="homeButton" layoutX="741.0" layoutY="6.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goHome" prefHeight="39.0" prefWidth="43.0" style="-fx-background-color: #ffeb3b;" textFill="#29323d">
                <font>
                   <Font name="Microsoft YaHei Bold" size="14.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Images/home_icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </Button>
          </children>
       </AnchorPane>
@@ -45,9 +38,9 @@
                   <Image url="@../../Images/defaultEventPoster.png" />
                </image>
             </ImageView>
-            <Text fx:id="selectedEventTitle" fill="#3b4754" layoutX="14.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Name" wrappingWidth="217.91453170776367">
+            <Text fx:id="selectedEventTitle" fill="#3b4754" layoutX="28.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Name" textAlignment="CENTER" wrappingWidth="351.9145317077637">
                <font>
-                  <Font name="Optima Bold" size="24.0" />
+                  <Font name="Century Gothic Bold" size="24.0" />
                </font>
             </Text>
             <Button fx:id="emailButton" layoutX="175.0" layoutY="319.0" mnemonicParsing="false" onAction="#emailConfirmation" prefHeight="25.0" prefWidth="189.0" style="-fx-background-color: #29323D;" text="Send Confirmation Email" textFill="WHITE">
@@ -112,9 +105,9 @@
    <center>
       <AnchorPane prefHeight="405.0" prefWidth="423.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="TOP_CENTER" layoutX="41.0" layoutY="1.0" prefHeight="47.0" prefWidth="339.0" text="Booking Confirmation" textFill="#3b4754" textOverrun="CLIP" wrapText="true">
+            <Label alignment="TOP_CENTER" layoutX="41.0" layoutY="5.0" prefHeight="47.0" prefWidth="339.0" text="Booking Confirmation" textFill="#3b4754" textOverrun="CLIP" wrapText="true">
                <font>
-                  <Font name="PT Sans Bold" size="30.0" />
+                  <Font name="Century Gothic Bold" size="30.0" />
                </font>
             </Label>
             <Label alignment="TOP_CENTER" layoutX="14.0" layoutY="62.0" prefHeight="27.0" prefWidth="171.0" text="Customer Details" textFill="#3b4754" textOverrun="CLIP" wrapText="true">

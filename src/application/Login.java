@@ -37,11 +37,12 @@ public class Login {
 
     /**
      * Handles the login button click
+     * @throws IOException 
      */
-    public void userLogin(ActionEvent event) {
-        switchToScene("View Events.fxml");  //debugging purpose only, remove it 
+    public void userLogin(ActionEvent event) throws IOException {
+        //switchToScene("View Events.fxml");  //debugging purpose only, remove it 
 		System.out.println("Attempting login...");
-         // checkLogin();
+        checkLogin();
     }
 
     /**
