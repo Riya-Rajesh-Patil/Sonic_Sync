@@ -15,3 +15,5 @@ booked;First Name;Last Name;Boris Brejcha;04/12/2024;18:00;A7, A4, B2;No;EVENT81
 booked;First Name;Last Name;Boris Brejcha;04/12/2024;18:00;A6, B4;No;EVENT359
 booked;Ritvik;Saxena;Boris Brejcha;04/12/2024;18:00;A6, B1;No;EVENT6068
 booked;Ritvik;Saxena;Karan Aujla;04/12/2024;1:00;A6, B3, A1;No;EVENT2395
+booked;Ritvik;Saxena;Boris Brejcha;04/12/2024;18:00;A8, B3;No;EVENT6745
+booked;Ritvik;Saxena;Boris Brejcha;20/12/2024;18:00;A1, A6;Yes;EVENT9976

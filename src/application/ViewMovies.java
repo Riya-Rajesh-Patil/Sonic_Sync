@@ -21,7 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
-public class ViewEvents implements Initializable {
+public class ViewMovies implements Initializable {
 
     ArrayList<File> fileList = new ArrayList<File>();
     HBox hb = new HBox();
@@ -44,8 +44,9 @@ public class ViewEvents implements Initializable {
 
         try { // reading file and adding to a list
             // getting folder path
-            String path = "./Images/eventImages";
+            String path = "./Images/movieImages";
             // creating file object passing in the constructor the folder path
+            System.out.println(path);
             File folder = new File(path);
             // pushing single path files in the array fileList
             for (File file : folder.listFiles()) {

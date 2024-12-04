@@ -35,7 +35,7 @@
             <Image url="@../Images/Tile.png" />
          </image>
       </ImageView>
-      <Button fx:id="logoutBtn" layoutX="571.0" layoutY="7.0" mnemonicParsing="false" onAction="#userLogout" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #ffffff;" text="Log Out" textFill="#29323d">
+      <Button fx:id="backButton" layoutX="571.0" layoutY="7.0" mnemonicParsing="false" onAction="#goBack" prefHeight="27.0" prefWidth="100.0" style="-fx-background-color: #ffffff;" text="Back" textFill="#29323d">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
