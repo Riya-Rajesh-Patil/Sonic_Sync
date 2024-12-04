@@ -60,9 +60,9 @@ public class EventManagement {
         ObservableList<String> obsList1 = FXCollections.observableArrayList("13:00", "14:00", "15:00", "16:00", "17:00",
                 "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "00:00", "01:00", "02:00", "03:00");
         ObservableList<String> obsList2 = FXCollections.observableArrayList("U", "PG", "12A", "15", "18", "R");
-        eventAge.setItems(obsList2);
-        eventAge.setValue("12A");
-        newEventAge.setText("12A");
+        //eventAge.setItems(obsList2);
+        //eventAge.setValue("12A");
+        //newEventAge.setText("12A");
         eventTime1.setItems(obsList1);
         eventTime2.setItems(obsList1);
         eventTime3.setItems(obsList1);
@@ -112,9 +112,9 @@ public class EventManagement {
                 case "eventTime3":
                     newEventTime3.setText(eventTime3.getValue().toString());
                     break;
-                case "eventAge":
+                /*case "eventAge":
                     newEventAge.setText(eventAge.getValue().toString());
-                    break;
+                    break;*/
             }
         } catch (NullPointerException ex) {
             ex.getMessage();
@@ -191,7 +191,7 @@ public class EventManagement {
             FileWriter fw = new FileWriter("events.txt", true);
             fw.write(newEventTitle.getText() + ";" + newEventDescription.getText() + ";" + eventTrailer.getText() + ";" +
                      newEventStartDate.getText() + ";" + newEventEndDate.getText() + ";" + newEventTime1.getText() + ";" +
-                     newEventTime2.getText() + ";" + newEventTime3.getText() + ";" + newEventAge.getText() + ";" +
+                     newEventTime2.getText() + ";" + newEventTime3.getText() + ";" +
                      newEventRating.getText() + "\n");
             fw.close();
 
@@ -228,7 +228,7 @@ public class EventManagement {
         try {
             if (eventTitle.getText().equals("") || eventDescription.getText().equals("") ||
                 eventTrailer.getText().equals("") || eventStartDate.getValue().equals("dd/MM/yyyy") ||
-                eventEndDate.getValue().equals("dd/MM/yyyy") || eventAge.getValue().equals("") ||
+                eventEndDate.getValue().equals("dd/MM/yyyy") || 
                 eventRating.getText().equals("")) {
                 throw new InvalidEventInputException("Please complete all fields!");
             } else if (selectedImage == null) {

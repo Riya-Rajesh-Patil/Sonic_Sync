@@ -15,9 +15,14 @@
          <children>
             <ScrollPane fx:id="scrollPane" layoutX="1.0" layoutY="32.0" prefHeight="368.0" prefWidth="703.0" style="-fx-background-color: white;">
                <content>
-                  <AnchorPane prefHeight="368.0" prefWidth="639.0" style="-fx-background-color: white;">
+                  <AnchorPane prefHeight="327.0" prefWidth="685.0" style="-fx-background-color: white;">
                      <children>
-                        <GridPane fx:id="grid" layoutX="2.0" layoutY="8.0" prefHeight="359.0" prefWidth="683.0" style="-fx-background-color: white;" />
+                        <ImageView fitHeight="182.0" fitWidth="700.0" layoutX="-12.0" layoutY="-38.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/dashboardImages/Screenshot%202024-12-04%20120223.png" />
+                           </image>
+                        </ImageView>
+                        <GridPane fx:id="grid" layoutX="-3.0" layoutY="89.0" prefHeight="278.0" prefWidth="693.0" style="-fx-background-color: white;" />
                      </children>
                   </AnchorPane>
                </content>
