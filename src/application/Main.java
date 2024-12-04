@@ -15,14 +15,10 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    // Static reference to the primary stage
     private static Stage primaryStage;
-
-    // Organizer mode and selected event details
     private static boolean organizerMode = false;
     private static String selectedEventTitle = "";
 
-    // LinkedLists for event data
     public static final LinkedList<String> eventTitles = new LinkedList<>();
     public static final LinkedList<String> eventStartDates = new LinkedList<>();
     public static final LinkedList<String> eventEndDates = new LinkedList<>();
@@ -30,23 +26,16 @@ public class Main extends Application {
     public static final LinkedList<String> eventTime2 = new LinkedList<>();
     public static final LinkedList<String> eventTime3 = new LinkedList<>();
 
-    // Booking history
     private static final HashSet<BookingHistoryItem> bookings = new HashSet<>();
 
-    /**
-     * Start method to launch the application
-     */
     @Override
     public void start(Stage stage) {
         try {
-            // Initialize the primary stage
             primaryStage = stage;
 
-            // Load the loader screen (initial screen)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Loader.fxml"));
             Parent root = loader.load();
 
-            // Set up the scene and show the stage
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle("EventHive - Loading...");
@@ -58,16 +47,12 @@ public class Main extends Application {
         }
     }
 
-    /**
-     * Switch to the Login screen
-     */
     public static void switchToLogin() {
         try {
             System.out.println("Switching to Login.fxml...");
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/application/Login.fxml"));
             Parent root = loader.load();
 
-            // Set up the new scene
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle("EventHive - Login");
@@ -78,17 +63,12 @@ public class Main extends Application {
         }
     }
 
-    /**
-     * Change the scene to a different FXML file
-     * @param fxml The FXML file name to load
-     */
     public void changeScene(String fxml) {
         try {
             System.out.println("Changing scene to: " + fxml);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/" + fxml));
             Parent pane = loader.load();
 
-            // Update the primary stage with the new scene
             primaryStage.getScene().setRoot(pane);
             primaryStage.sizeToScene();
         } catch (Exception e) {
@@ -97,15 +77,11 @@ public class Main extends Application {
         }
     }
 
-    /**
-     * Read event data from a file
-     * @throws IOException If the file cannot be read
-     */
     public static void readEventData() throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader("events.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] data = line.split(";"); // Data is delimited by semicolons
+                String[] data = line.split(";");
                 eventTitles.add(data[0]);
                 eventStartDates.add(data[3]);
                 eventEndDates.add(data[4]);
@@ -120,15 +96,9 @@ public class Main extends Application {
         }
     }
 
-    /**
-     * Launch the application
-     * @param args Command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
     }
-
-    // Getters and Setters for static fields
 
     public static boolean isOrganizer() {
         return organizerMode;

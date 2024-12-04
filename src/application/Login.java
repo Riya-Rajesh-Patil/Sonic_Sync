@@ -32,22 +32,13 @@ public class Login {
     @FXML
     private Hyperlink regLink;
 
-    // To store the currently logged-in user's email
     private static String currentUser = "";
 
-    /**
-     * Handles the login button click
-     * @throws IOException 
-     */
-    public void userLogin(ActionEvent event) throws IOException {
-        //switchToScene("View Events.fxml");  //debugging purpose only, remove it 
+    public void userLogin(ActionEvent event) throws IOException { 
 		System.out.println("Attempting login...");
         checkLogin();
     }
 
-    /**
-     * Handles the registration hyperlink click, switches to the Sign-Up page
-     */
     public void goToReg(ActionEvent event) {
         try {
             System.out.println("Navigating to the Sign-Up page...");
@@ -57,7 +48,6 @@ public class Login {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/SignUp Page.fxml"));
             Parent pane = loader.load();
 
-            // Use the primary stage from Main
             if (Main.getStage() == null) {
                 System.out.println("Main's primary stage is null.");
                 return;
@@ -71,9 +61,6 @@ public class Login {
         }
     }
 
-    /**
-     * Checks the login details and transitions to the appropriate page
-     */
     private void checkLogin() throws IOException {
         if (email.getText().isEmpty() || password.getText().isEmpty()) {
             handleEmptyFields();
@@ -83,26 +70,20 @@ public class Login {
         String loginEmail = email.getText();
         String loginPswd = password.getText();
 
-        // Check for predefined organizer login
         if ("admin".equals(loginEmail) && "admin".equals(loginPswd)) {
             Main.setOrganizerMode(true);
             switchToScene("Organizer Home Page.fxml");
             return;
         }
 
-        // Validate against the Registration details file
         if (validateCredentials(loginEmail, loginPswd)) {
             currentUser = loginEmail;
-            //switchToScene("View Events.fxml");
             switchToScene("Dashboard.fxml");
         } else {
             invalidEntry.setText("*Invalid email or password*");
         }
     }
 
-    /**
-     * Handles empty email or password fields
-     */
     private void handleEmptyFields() {
         if (email.getText().isEmpty() && password.getText().isEmpty()) {
             invalidEntry.setText("*Please enter email and password.*");
@@ -113,10 +94,6 @@ public class Login {
         }
     }
 
-    /**
-     * Validates the email and password against the registration details file
-     * @return true if the credentials are valid, false otherwise
-     */
     private boolean validateCredentials(String loginEmail, String loginPswd) {
         String filepath = "./Registration details.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(filepath))) {
@@ -134,16 +111,11 @@ public class Login {
         return false;
     }
 
-    /**
-     * Switches to a new scene
-     */
     private void switchToScene(String fxmlFile) {
         try {
             System.out.println("Switching to: " + fxmlFile);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/" + fxmlFile));
             Parent pane = loader.load();
-
-            // Use the primary stage from Main
             Main.getStage().getScene().setRoot(pane);
             Main.getStage().sizeToScene();
         } catch (IOException e) {
@@ -152,7 +124,6 @@ public class Login {
         }
     }
 
-    // Getter and Setter for the current user
     public static String getCurrentUser() {
         return currentUser;
     }

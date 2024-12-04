@@ -42,8 +42,6 @@ public class EventBooking {
     private ComboBox<String> adultCombo, childCombo, seniorCombo, eventTimes;
     @FXML
     private Text selectedEventTitle, totalPrice;
-    //@FXML
-    //private TextField screen;
     @FXML
     private CheckBox vipUpgrade;
     @FXML
@@ -60,37 +58,30 @@ public class EventBooking {
 
     @FXML
     void initialize() throws IOException {
-        selectedEvent = Main.getSelectedEventTitle(); // Assigns the event chosen by the user to the 'selectedEvent' variable
+        selectedEvent = Main.getSelectedEventTitle(); 
 
-        // Initializes the ObservableLists
         ObservableList<String> times = FXCollections.observableArrayList();
         ObservableList<String> numberOfTickets = FXCollections.observableArrayList("0", "1", "2", "3", "4", "5", "6", "7", "8");
         ObservableList<String> validation = FXCollections.observableArrayList("0");
 
-        // Creates 'String' variables for 'endDate' and 'age'
         String endDate = "";
         String age = "";
 
-        // Creates FileReader and BufferedReader to be able to read the file
         FileReader fr = new FileReader("events.txt");
         BufferedReader br = new BufferedReader(fr);
-        String line = br.readLine(); // Reads the first line of the file
-        while (line != null) { // WHILE loop to iterate through the lines of the file
-            String[] data = line.split(";"); // Assigns a semi-colon as the data delimiter
-            // Finds data associated with the chosen event and assigns the event details to corresponding variables
+        String line = br.readLine(); 
+        while (line != null) { 
+            String[] data = line.split(";"); 
             if (data[0].equals(selectedEvent)) {
                 selectedEventTitle.setText(data[0]);
-               // age = data[8];
                 times = FXCollections.observableArrayList(data[5]);
                 endDate = data[4];
             }
-            line = br.readLine(); // Reads the next line
+            line = br.readLine();
         }
 
-        // Formats the DatePicker so the user cannot pick a date before today's date or after the end date
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate today = LocalDate.now();
-        //LocalDate end = LocalDate.parse(endDate, formatter);
         final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
             @Override
             public DateCell call(final DatePicker selectedDate) {
@@ -125,7 +116,6 @@ public class EventBooking {
         int max = 3;
         int screenNo = (int) Math.floor(Math.random() * (max - min + 1) + min);
         screenNum = Integer.toString(screenNo);
-       // screen.setText(screenNum);
 
         String path = "./Images/eventImages/";
         imgFile = new File(path + selectedEvent + ".png");

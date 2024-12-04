@@ -42,13 +42,10 @@ public class ViewMovies implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        try { // reading file and adding to a list
-            // getting folder path
+        try {
             String path = "./Images/movieImages";
-            // creating file object passing in the constructor the folder path
             System.out.println(path);
             File folder = new File(path);
-            // pushing single path files in the array fileList
             for (File file : folder.listFiles()) {
                 if (!file.toString().contains("DS_Store"))
                     fileList.add(file);
@@ -56,13 +53,9 @@ public class ViewMovies implements Initializable {
 
             scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
-            // gridpane settings
-            // setting exterior grid padding
             grid.setPadding(new Insets(7, 7, 7, 7));
-            // setting interior grid padding
             grid.setHgap(10);
             grid.setVgap(10);
-            // grid.setGridLinesVisible(true);
 
             int rows = (fileList.size() / 4) + 1;
             int columns = 4;
@@ -81,17 +74,10 @@ public class ViewMovies implements Initializable {
         }
     }
 
-    /**
-     * Method that adds ImageView nodes to a GridPane
-     * 
-     * @param int index, int colIndex, int rowIndex
-     */
     private void addImage(int index, int colIndex, int rowIndex) {
 
         String idToCut = fileList.get(index).getName();
         String id = idToCut.substring(0, (idToCut.length() - 4));
-        // System.out.println(id);
-        // System.out.println(fileList.get(i).getName());
         image = new Image(fileList.get(index).toURI().toString());
         pic = new ImageView();
         pic.setFitWidth(160);
@@ -100,12 +86,10 @@ public class ViewMovies implements Initializable {
         pic.setId(id);
         hb.getChildren().add(pic);
         GridPane.setConstraints(pic, colIndex, rowIndex, 1, 1, HPos.CENTER, VPos.CENTER);
-        // grid.add(pic, imageCol, imageRow);
         grid.getChildren().addAll(pic);
 
         pic.setOnMouseClicked(e -> {
             Main.setSelectedEventTitle(id);
-			// storing the selected event to customize the newly created scene
 			Main m = new Main();
 			m.changeScene("Event Page.fxml");
         });

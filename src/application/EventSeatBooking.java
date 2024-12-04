@@ -50,32 +50,32 @@ public class EventSeatBooking {
 
     private void setUpSeats() {
         for (int i = 0; i < seats.length; i++) {
-            if (eventBookings[i] == false) { // IF the seat is available...
-                seats[i].setStyle("-fx-background-color:  #edf0f4"); // GREY colour
+            if (eventBookings[i] == false) { 
+                seats[i].setStyle("-fx-background-color:  #edf0f4"); 
                 int finalI1 = i;
 
-                seats[i].setOnAction(event -> { // Using a lambda expression as an action listener
-                    if (booked[finalI1] == false) { // IF the seat is selected...
+                seats[i].setOnAction(event -> { 
+                    if (booked[finalI1] == false) { 
                         if (numberOfSeats < maxSeats) {
                             numberOfSeats++;
-                            seats[finalI1].setStyle("-fx-background-color:  #23b33b"); // GREEN colour
+                            seats[finalI1].setStyle("-fx-background-color:  #23b33b"); 
                             setBookedSeats(seats[finalI1], true);
-                        } else { // Outputs error message
+                        } else { 
                             Alert alert = new Alert(AlertType.WARNING, "Error: Maximum seat limit reached!", ButtonType.OK);
                             alert.showAndWait();
                             if (alert.getResult() == ButtonType.OK) {
                                 return;
                             }
                         }
-                    } else if (booked[finalI1] == true) { // IF the user unselects a seat...
-                        numberOfSeats--; // Subtracts 1 from the number of selected seats
-                        seats[finalI1].setStyle("-fx-background-color:  #edf0f4"); // GREY colour
+                    } else if (booked[finalI1] == true) { 
+                        numberOfSeats--; 
+                        seats[finalI1].setStyle("-fx-background-color:  #edf0f4"); 
                         setBookedSeats(seats[finalI1], false);
                     }
                     popSeat(seats[finalI1]);
                 });
-            } else if (eventBookings[i] == true) { // IF the seat is unavailable...
-                seats[i].setStyle("-fx-background-color:  #e40606"); // RED colour
+            } else if (eventBookings[i] == true) { 
+                seats[i].setStyle("-fx-background-color:  #e40606");
                 int finalI = i;
                 seats[i].setOnAction(event -> rotateButton(seats[finalI]));
             }
