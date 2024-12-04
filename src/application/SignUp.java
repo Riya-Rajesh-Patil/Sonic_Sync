@@ -38,7 +38,8 @@ public class SignUp {
         m.changeScene("Login.fxml");
     }
 
-    public void userRegister(ActionEvent event) throws IOException {
+    public void userReg(ActionEvent event) throws IOException {
+    	System.out.println("Register button clicked!");
         validateRegistration();
     }
 

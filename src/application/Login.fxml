@@ -12,70 +12,87 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Login">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #FFF8E1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Login">
    <left>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="450.0" prefWidth="350.0" BorderPane.alignment="CENTER" style="-fx-background-color: #FFEB3B;">
          <children>
-            <ImageView fitHeight="351.0" fitWidth="344.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+            <!-- Updated Logo -->
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="25.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Images/PCR Logo.png" />
+                  <Image url="@../../Images/EventHiveLogo.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="400.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="450.0" prefWidth="350.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7b9298" height="346.0" layoutX="12.0" layoutY="27.0" stroke="#edf0f4" strokeType="INSIDE" width="232.0" />
-            <Label layoutX="24.0" layoutY="38.0" text="Login" textFill="#3b4754">
+            <!-- Background for Right Pane -->
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#FFFFFF" height="380.0" layoutX="25.0" layoutY="35.0" stroke="#FFD54F" strokeWidth="2" strokeType="INSIDE" width="300.0" />
+            
+            <!-- Title -->
+            <Label layoutX="50.0" layoutY="50.0" text="Welcome Back!" textFill="#1C2A38">
                <font>
-                  <Font name="System Bold" size="21.0" />
+                  <Font name="Roboto Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="17.0" layoutY="128.0" text="Email Address:" textFill="#3b4754">
+            
+            <!-- Subtext -->
+            <Label layoutX="50.0" layoutY="85.0" prefHeight="50.0" prefWidth="250.0" text="Sign in to your EventHive account to explore and manage your bookings!" textFill="#757575" wrapText="true">
                <font>
-                  <Font name="System Bold" size="21.0" />
+                  <Font name="Roboto Light" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="23.0" layoutY="216.0" text="Password:" textFill="#3b4754">
+            
+            <!-- Email Address Field -->
+            <Label layoutX="50.0" layoutY="150.0" text="Email Address:" textFill="#1C2A38">
                <font>
-                  <Font name="System Bold" size="21.0" />
+                  <Font name="Roboto Medium" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="23.0" layoutY="75.0" prefHeight="39.0" prefWidth="213.0" text="Access your exclusive Sonic Sync account by signing in now!" textFill="WHITE" wrapText="true">
+            <TextField fx:id="email" layoutX="50.0" layoutY="175.0" prefHeight="40.0" prefWidth="250.0" promptText="example@email.com" style="-fx-background-color: #FFFDE7; -fx-border-color: #FFD54F; -fx-border-radius: 10px; -fx-padding: 10px;">
                <font>
-                  <Font name="Microsoft YaHei Light" size="12.0" />
-               </font>
-            </Label>
-            <TextField fx:id="email" layoutX="20.0" layoutY="175.0" prefHeight="25.0" prefWidth="203.0" promptText="example@email.com">
-               <font>
-                  <Font name="Microsoft YaHei Light" size="12.0" />
+                  <Font name="Roboto Light" size="14.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="password" layoutX="21.0" layoutY="260.0" prefHeight="25.0" prefWidth="203.0" promptText="Enter password">
+            
+            <!-- Password Field -->
+            <Label layoutX="50.0" layoutY="230.0" text="Password:" textFill="#1C2A38">
                <font>
-                  <Font name="Microsoft YaHei Light" size="12.0" />
-               </font>
-            </PasswordField>
-            <Button fx:id="loginBtn" layoutX="82.0" layoutY="308.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: #29323d;" text="LOG IN" textFill="WHITE" wrapText="true">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Label layoutX="22.0" layoutY="342.0" prefHeight="24.0" prefWidth="143.0" text="Don't have an account?" textFill="WHITE" wrapText="true">
-               <font>
-                  <Font name="Microsoft YaHei Light" size="12.0" />
+                  <Font name="Roboto Medium" size="16.0" />
                </font>
             </Label>
-            <Hyperlink fx:id="regLink" layoutX="147.0" layoutY="344.0" onAction="#goToReg" text="Sign up here" textFill="#0037ff" underline="true" wrapText="true">
+            <PasswordField fx:id="password" layoutX="50.0" layoutY="255.0" prefHeight="40.0" prefWidth="250.0" promptText="Enter password" style="-fx-background-color: #FFFDE7; -fx-border-color: #FFD54F; -fx-border-radius: 10px; -fx-padding: 10px;">
                <font>
-                  <Font name="Microsoft YaHei Light" size="12.0" />
+                  <Font name="Roboto Light" size="14.0" />
+               </font>
+            </PasswordField>
+            
+            <!-- Login Button -->
+            <Button fx:id="loginBtn" layoutX="50.0" layoutY="310.0" mnemonicParsing="false" 
+        onAction="#userLogin" prefHeight="45.0" prefWidth="250.0" 
+        style="-fx-background-color: linear-gradient(#FFEB3B, #FFC107); -fx-text-fill: #1C2A38; -fx-font-size: 16px; -fx-background-radius: 15px;">
+    <text>LOG IN</text>
+</Button>
+
+            
+            <!-- Sign-Up Link -->
+            <Label layoutX="50.0" layoutY="375.0" text="Don't have an account?" textFill="#757575">
+               <font>
+                  <Font name="Roboto Light" size="14.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="regLink" layoutX="200.0" layoutY="375.0" onAction="#goToReg" text="Sign up here" textFill="#1C2A38" underline="true">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
                </font>
             </Hyperlink>
-            <Label fx:id="invalidEntry" layoutX="22.0" layoutY="243.0" prefHeight="17.0" prefWidth="201.0" textFill="CRIMSON" wrapText="true">
+            
+            <!-- Error Message -->
+            <Label fx:id="invalidEntry" layoutX="50.0" layoutY="285.0" prefHeight="20.0" prefWidth="250.0" textFill="CRIMSON" wrapText="true" style="-fx-font-size: 12px; -fx-padding: 5px;">
                <font>
-                  <Font name="Microsoft YaHei Light" size="12.0" />
+                  <Font name="Roboto Light" size="12.0" />
                </font>
             </Label>
          </children>

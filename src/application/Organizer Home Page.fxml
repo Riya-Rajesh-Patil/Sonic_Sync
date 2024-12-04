@@ -9,19 +9,19 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EmployeeHome">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OrganizerHome">
    <top>
       <AnchorPane prefHeight="47.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="45.0" stroke="#edf0f4" strokeType="INSIDE" width="600.0" />
-            <Button fx:id="logoutBtn" layoutX="502.0" layoutY="8.0" mnemonicParsing="false" onAction="#employeeLogout" prefHeight="27.0" prefWidth="83.0" style="-fx-background-color: #29323D;" text="LOG OUT" textFill="WHITE">
+            <Button fx:id="logoutBtn" layoutX="502.0" layoutY="8.0" mnemonicParsing="false" onAction="#organizerLogout" prefHeight="27.0" prefWidth="83.0" style="-fx-background-color: #29323D;" text="LOG OUT" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei Bold" size="12.0" />
                </font>
             </Button>
             <ImageView fitHeight="41.0" fitWidth="41.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Images/SonicSync Logo.png" />
+                  <Image url="@../../Images/EventHiveLogo.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="33.0" fitWidth="200.0" layoutX="57.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">

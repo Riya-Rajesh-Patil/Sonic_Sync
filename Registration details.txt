@@ -1,8 +1,2 @@
-Namitha;Jc;jcnamitha.27@gmail.com;Letsgoo@12
-Manjunath;Sai;manju.pratuv@gmail.com;Movie@123
-Sinchana;Kumara;sinchanakumar35@gmail.com;Movienight@12
-Sinchana;Kumara;sinchanakumar35@gmail.com;Movie@12345
-Pavan;Pai;paipavan573@gmail.com;Pavan@1998
-Rishab;Shukla;rishabjshukla007@gmail.com;Rishab@123
-Pava;Pai;paipavan.us@gmail.com;Pavan@1998
-Pavan;Pai;paipavanbkl@gmail.com;Pavan@1998
+Ritvik; Saxena; rit@gmail.com; Letsgo@123
+Ritvik;Saxena;r@g.com;Pass@123
