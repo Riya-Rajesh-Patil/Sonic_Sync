@@ -93,7 +93,8 @@ public class Login {
         // Validate against the Registration details file
         if (validateCredentials(loginEmail, loginPswd)) {
             currentUser = loginEmail;
-            switchToScene("View Events.fxml");
+            //switchToScene("View Events.fxml");
+            switchToScene("Dashboard.fxml");
         } else {
             invalidEntry.setText("*Invalid email or password*");
         }
