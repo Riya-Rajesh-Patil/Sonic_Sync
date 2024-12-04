@@ -12,3 +12,6 @@ booked;Pavan;Pai;Kanatara 2;18/04/2024;17:00;A3, B4, A7;Yes;PCR397
 booked;Pavan;Pai;KANTARA;17/04/2024;16:00;A4;No;PCR6513
 booked;Pavan;Pai;KANTARA;26/11/2024;21:00;C4;Yes;PCR2868
 booked;First Name;Last Name;Boris Brejcha;04/12/2024;18:00;A7, A4, B2;No;EVENT8148
+booked;First Name;Last Name;Boris Brejcha;04/12/2024;18:00;A6, B4;No;EVENT359
+booked;Ritvik;Saxena;Boris Brejcha;04/12/2024;18:00;A6, B1;No;EVENT6068
+booked;Ritvik;Saxena;Karan Aujla;04/12/2024;1:00;A6, B3, A1;No;EVENT2395

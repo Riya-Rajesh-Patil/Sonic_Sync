@@ -135,7 +135,7 @@ public class EventSendEmail { // Controller class that sends an email to the use
         codeQrImage.scaleAbsolute(200, 200);
         document.add(codeQrImage);
 
-        Image img = Image.getInstance("./Images/PCR Logo.png");
+        Image img = Image.getInstance("./Images/EventHiveLogo.png");
         img.scaleAbsolute(180f, 179.5f);
         img.setAbsolutePosition(4, 22);
         document.add(img);
