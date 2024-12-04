@@ -39,13 +39,9 @@ public class Login {
      * Handles the login button click
      */
     public void userLogin(ActionEvent event) {
-        try {
-            System.out.println("Attempting login...");
-            checkLogin();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Error during login process.");
-        }
+        switchToScene("View Events.fxml");  //debugging purpose only, remove it 
+		System.out.println("Attempting login...");
+         // checkLogin();
     }
 
     /**
