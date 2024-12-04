@@ -9,14 +9,14 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OrganizerHome">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFF8E1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OrganizerHome">
    <top>
       <AnchorPane prefHeight="47.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="45.0" stroke="#edf0f4" strokeType="INSIDE" width="600.0" />
-            <Button fx:id="logoutBtn" layoutX="502.0" layoutY="8.0" mnemonicParsing="false" onAction="#organizerLogout" prefHeight="27.0" prefWidth="83.0" style="-fx-background-color: #29323D;" text="LOG OUT" textFill="WHITE">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffeb3b" height="45.0" stroke="#edf0f4" strokeType="INSIDE" width="600.0" />
+            <Button fx:id="logoutBtn" layoutX="502.0" layoutY="8.0" mnemonicParsing="false" onAction="#organizerLogout" prefHeight="27.0" prefWidth="83.0" style="-fx-background-color: #ffffff;" text="LOG OUT">
                <font>
-                  <Font name="Microsoft YaHei Bold" size="12.0" />
+                  <Font name="Arial Bold" size="12.0" />
                </font>
             </Button>
             <ImageView fitHeight="41.0" fitWidth="41.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
@@ -24,47 +24,42 @@
                   <Image url="@../../Images/EventHiveLogo.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="33.0" fitWidth="200.0" layoutX="57.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Images/SonicSync Tile.png" />
-               </image>
-            </ImageView>
          </children>
       </AnchorPane>
    </top>
    <right>
-      <AnchorPane prefHeight="355.0" prefWidth="379.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="305.0" prefWidth="329.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#edf0f4" height="354.0" layoutY="-1.0" stroke="#edf0f4" strokeType="INSIDE" width="399.0" />
-            <ImageView fitHeight="361.0" fitWidth="354.0" layoutX="19.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffeb3b" height="354.0" layoutX="22.0" layoutY="-1.0" stroke="#edf0f4" strokeType="INSIDE" width="377.0" />
+            <ImageView fitHeight="361.0" fitWidth="346.0" layoutX="38.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Images/PCR Logo.png" />
+                  <Image url="@../../Images/EventHiveLogo.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
    </right>
    <left>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="369.0" prefWidth="243.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" prefHeight="19.0" prefWidth="86.0" text="Hello!" textFill="#3b4754" wrapText="true">
+            <Label alignment="CENTER" layoutX="79.0" layoutY="33.0" prefHeight="19.0" prefWidth="86.0" text="Hello!" textFill="#3b4754" wrapText="true">
                <font>
                   <Font name="Optima Bold" size="18.0" />
                </font>
             </Label>
-            <Label alignment="TOP_CENTER" layoutX="10.0" layoutY="40.0" prefHeight="134.0" prefWidth="179.0" text="Admin" textFill="#3b4754" textOverrun="CLIP" wrapText="true">
+            <Label alignment="TOP_CENTER" layoutX="32.0" layoutY="75.0" prefHeight="134.0" prefWidth="179.0" text="Admin" textFill="#3b4754" textOverrun="CLIP" wrapText="true">
                <font>
                   <Font name="Baskerville Bold" size="36.0" />
                </font>
             </Label>
-            <Button fx:id="exportBookingsBtn" layoutX="13.0" layoutY="269.0" mnemonicParsing="false" onAction="#exportBookings" prefHeight="25.0" prefWidth="173.0" style="-fx-background-color: #29323d;" text="EXPORT BOOKINGS" textFill="WHITE">
+            <Button fx:id="exportBookingsBtn" layoutX="35.0" layoutY="223.0" mnemonicParsing="false" onAction="#exportBookings" prefHeight="25.0" prefWidth="173.0" style="-fx-background-color: linear-gradient(#FFC107, #FFEB3B); -fx-text-fill: #1C2A38;" text="EXPORT BOOKINGS" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Arial" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="manageEventsBtn" layoutX="13.0" layoutY="305.0" mnemonicParsing="false" onAction="#goToEventManagement" prefHeight="25.0" prefWidth="173.0" style="-fx-background-color: #29323d;" text="MANAGE EVENTS" textFill="WHITE">
+            <Button fx:id="manageEventsBtn" layoutX="35.0" layoutY="276.0" mnemonicParsing="false" onAction="#goToEventManagement" prefHeight="25.0" prefWidth="173.0" style="-fx-background-color: linear-gradient(#FFC107, #FFEB3B); -fx-text-fill: #1C2A38;" text="MANAGE EVENTS" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Arial" size="12.0" />
                </font>
             </Button>
          </children>

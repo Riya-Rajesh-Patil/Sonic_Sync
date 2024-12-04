@@ -84,7 +84,7 @@ public class Login {
         String loginPswd = password.getText();
 
         // Check for predefined organizer login
-        if ("pcrcinemas@gmail.com".equals(loginEmail) && "123456".equals(loginPswd)) {
+        if ("admin".equals(loginEmail) && "admin".equals(loginPswd)) {
             Main.setOrganizerMode(true);
             switchToScene("Organizer Home Page.fxml");
             return;

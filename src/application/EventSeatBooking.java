@@ -40,7 +40,7 @@ public class EventSeatBooking {
     @FXML
     void initialize() throws IOException {
         selectedSeats.setText("");
-        booked = new boolean[24];
+        booked = new boolean[36];
         initialiseArray();
         setUpSeats();
         eventName.setText(Main.getSelectedEventTitle());

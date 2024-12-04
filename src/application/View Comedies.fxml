@@ -6,7 +6,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewComedies">
@@ -17,7 +19,18 @@
                <content>
                   <AnchorPane prefHeight="368.0" prefWidth="639.0" style="-fx-background-color: white;">
                      <children>
-                        <GridPane fx:id="grid" layoutX="2.0" layoutY="8.0" prefHeight="359.0" prefWidth="683.0" style="-fx-background-color: white;" />
+                        <ImageView fitHeight="150.0" fitWidth="694.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/dashboardImages/Screenshot%202024-12-04%20120503.png" />
+                           </image>
+                        </ImageView>
+                        <GridPane fx:id="grid" layoutX="-3.0" layoutY="95.0" prefHeight="272.0" prefWidth="688.0" style="-fx-background-color: white;">
+                           <columnConstraints>
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints />
+                           </rowConstraints></GridPane>
                      </children>
                   </AnchorPane>
                </content>
