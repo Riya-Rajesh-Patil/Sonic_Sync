@@ -2,31 +2,26 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="805.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Confirmation">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="805.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EventConfirmation">
    <top>
       <AnchorPane prefHeight="47.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="60.0" stroke="#edf0f4" strokeType="INSIDE" width="805.0" />
             <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="13.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Images/PCR Logo.png" />
+                  <Image url="@../../Images/EventHiveLogo.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="45.0" fitWidth="241.0" layoutX="81.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Images/SonicSync Tile.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="homeBtn" layoutX="741.0" layoutY="6.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goHome" prefHeight="39.0" prefWidth="43.0" style="-fx-background-color: #edf0f4;" textFill="#29323d">
+            <Button fx:id="homeButton" layoutX="741.0" layoutY="6.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goHome" prefHeight="39.0" prefWidth="43.0" style="-fx-background-color: #edf0f4;" textFill="#29323d">
                <font>
                   <Font name="Microsoft YaHei Bold" size="14.0" />
                </font>
@@ -55,34 +50,59 @@
                   <Font name="Optima Bold" size="24.0" />
                </font>
             </Text>
-            <Button fx:id="emailBtn" layoutX="142.0" layoutY="361.0" mnemonicParsing="false" onAction="#emailConfirmation" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: #29323D;" text="EMAIL" textFill="WHITE">
+            <Button fx:id="emailButton" layoutX="175.0" layoutY="319.0" mnemonicParsing="false" onAction="#emailConfirmation" prefHeight="25.0" prefWidth="189.0" style="-fx-background-color: #29323D;" text="Send Confirmation Email" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei Bold" size="12.0" />
                </font>
             </Button>
-            <Text fill="#3b4754" layoutX="121.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adult:" wrappingWidth="53.24787521362305">
+            <Text fill="#3b4754" layoutX="33.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adult:" wrappingWidth="53.24787521362305">
                <font>
-                  <Font name="Microsoft YaHei Bold" size="16.0" />
+                  <Font name="Century Gothic" size="16.0" />
                </font>
             </Text>
-            <Text fill="#3b4754" layoutX="124.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Child:" wrappingWidth="47.91453170776367">
+            <Text fill="#3b4754" layoutX="35.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Child:" wrappingWidth="47.91453170776367">
                <font>
-                  <Font name="Microsoft YaHei Bold" size="16.0" />
+                  <Font name="Century Gothic" size="16.0" />
                </font>
             </Text>
-            <Text fill="#3b4754" layoutX="113.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senior:" wrappingWidth="62.58121871948242">
+            <Text fill="#3b4754" layoutX="29.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senior:" wrappingWidth="62.58121871948242">
                <font>
-                  <Font name="Microsoft YaHei Bold" size="16.0" />
+                  <Font name="Century Gothic" size="16.0" />
                </font>
             </Text>
-            <Text fill="#3b4754" layoutX="110.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL:" wrappingWidth="71.91453170776367">
+            <Text fill="#3b4754" layoutX="30.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL:" wrappingWidth="71.91453170776367">
                <font>
-                  <Font name="Microsoft YaHei Bold" size="16.0" />
+                  <Font name="Century Gothic" size="16.0" />
                </font>
             </Text>
-            <Text fill="#3b4754" layoutX="118.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Is VIP:" wrappingWidth="55.91453170776367">
+            <Text fill="#3b4754" layoutX="226.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Is VIP:" wrappingWidth="55.91453170776367">
                <font>
-                  <Font name="Microsoft YaHei Bold" size="16.0" />
+                  <Font name="Century Gothic" size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="adult" fill="#3b4754" layoutX="93.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="53.24787521362305">
+               <font>
+                  <Font name="Century Gothic" size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="child" fill="#3b4754" layoutX="94.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="53.24787521362305">
+               <font>
+                  <Font name="Century Gothic" size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="senior" fill="#3b4754" layoutX="94.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="53.24787521362305">
+               <font>
+                  <Font name="Century Gothic" size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="total" fill="#3b4754" layoutX="87.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$0.00" wrappingWidth="71.91453170776367">
+               <font>
+                  <Font name="Century Gothic" size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="isVip" fill="#3b4754" layoutX="275.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="XX" wrappingWidth="55.91453170776367">
+               <font>
+                  <Font name="Century Gothic" size="16.0" />
                </font>
             </Text>
             <!-- Text elements for adults, children, seniors, etc., remain unchanged -->
@@ -97,6 +117,76 @@
                   <Font name="PT Sans Bold" size="30.0" />
                </font>
             </Label>
+            <Label alignment="TOP_CENTER" layoutX="14.0" layoutY="62.0" prefHeight="27.0" prefWidth="171.0" text="Customer Details" textFill="#3b4754" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font name="Century Gothic" size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_CENTER" layoutX="14.0" layoutY="219.0" prefHeight="27.0" prefWidth="131.0" text="Event Details" textFill="#3b4754" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font name="Century Gothic" size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_CENTER" layoutX="14.0" layoutY="98.0" prefHeight="27.0" prefWidth="84.0" text="First Name" textFill="#3b4754" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="15.0" layoutY="133.0" prefHeight="27.0" prefWidth="110.0" text="Last Name" textFill="#3b4754" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_CENTER" layoutX="15.0" layoutY="168.0" prefHeight="27.0" prefWidth="43.0" text="Email" textFill="#3b4754" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+            </Label>
+            <Separator layoutX="18.0" layoutY="122.0" prefHeight="0.0" prefWidth="366.0" />
+            <Separator layoutX="17.0" layoutY="155.0" prefHeight="0.0" prefWidth="366.0" />
+            <Separator layoutX="17.0" layoutY="189.0" prefHeight="0.0" prefWidth="366.0" />
+            <Label alignment="TOP_CENTER" layoutX="14.0" layoutY="256.0" prefHeight="27.0" prefWidth="94.0" text="Date &amp; Time" textFill="#3b4754" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_CENTER" layoutX="15.0" layoutY="291.0" prefHeight="27.0" prefWidth="47.0" text="Seats" textFill="#3b4754" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_CENTER" layoutX="15.0" layoutY="326.0" prefHeight="27.0" prefWidth="74.0" text="Location" textFill="#3b4754" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+            </Label>
+            <Separator layoutX="18.0" layoutY="280.0" prefHeight="0.0" prefWidth="366.0" />
+            <Separator layoutX="17.0" layoutY="313.0" prefHeight="0.0" prefWidth="366.0" />
+            <Text fx:id="firstname" fill="#3b4754" layoutX="112.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" textAlignment="RIGHT" wrappingWidth="271.24787521362305">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="surname" fill="#3b4754" layoutX="145.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" textAlignment="RIGHT" wrappingWidth="238.24787521362305">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="email" fill="#3b4754" layoutX="137.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" textAlignment="RIGHT" wrappingWidth="247.24787521362305">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="datetime" fill="#3b4754" layoutX="137.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date &amp; Time" textAlignment="RIGHT" wrappingWidth="247.24787521362305">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="seats" fill="#3b4754" layoutX="137.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seats" textAlignment="RIGHT" wrappingWidth="247.24787521362305">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+            </Text>
             <!-- Text and other graphical elements updated similarly -->
          </children>
       </AnchorPane>

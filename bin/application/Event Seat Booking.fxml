@@ -1,78 +1,306 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="749.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SeatBooking">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" style="-fx-background-color: #FFF8E1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EventSeatBooking">
    <top>
-      <AnchorPane prefHeight="47.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="60.0" prefWidth="750.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="60.0" layoutX="-1.0" stroke="#edf0f4" strokeType="INSIDE" width="749.0" />
-            <ImageView fitHeight="49.0" fitWidth="47.0" layoutX="23.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="60.0" stroke="#FFEB3B" strokeWidth="2" width="750.0" />
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="10.0" layoutY="7.5" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Images/PCR Logo.png" />
+                  <Image url="@../../Images/EventHiveLogo.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="45.0" fitWidth="241.0" layoutX="109.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Images/PCR Tile.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="backBtn" layoutX="671.0" layoutY="7.0" mnemonicParsing="false" onAction="#goBack" prefHeight="36.0" prefWidth="69.0" style="-fx-background-color: #edf0f4;" text="Back" textFill="#29323d">
+            <Label layoutX="65.0" layoutY="15.0" text="EventHive" textFill="#1C2A38">
                <font>
-                  <Font name="Microsoft YaHei Bold" size="18.0" />
+                  <Font name="Roboto Bold" size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="backButton" layoutX="670.0" layoutY="12.0" mnemonicParsing="false" onAction="#goBack" prefHeight="35.0" prefWidth="70.0" style="-fx-background-color: #FFEB3B; -fx-text-fill: #1C2A38;" text="Back">
+               <font>
+                  <Font name="Roboto Medium" size="14.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
    </top>
    <center>
-      <AnchorPane prefHeight="400.0" prefWidth="753.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="390.0" prefWidth="750.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="TOP_CENTER" layoutX="7.0" layoutY="6.0" prefHeight="47.0" prefWidth="219.0" text="Select Seats for Event" textFill="#3b4754" textOverrun="CLIP" wrapText="true">
+            <Text fill="#1C2A38" layoutX="30.0" layoutY="40.0" text="Select Your Seats" wrappingWidth="200.0">
                <font>
-                  <Font name="Optima Bold" size="30.0" />
+                  <Font name="Roboto Bold" size="22.0" />
+               </font>
+            </Text>
+            <Text fx:id="eventName" fill="#757575" layoutX="81.0" layoutY="296.0" text="Event Name" wrappingWidth="300.0">
+               <font>
+                  <Font name="Roboto Medium" size="16.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="10.0" arcWidth="10.0" fill="WHITE" height="20.0" layoutX="109.0" layoutY="64.0" stroke="WHITE" strokeType="INSIDE" width="532.0" />
+            <Text fill="#1C2A38" fontSmoothingType="LCD" layoutX="344.0" layoutY="79.0" text="Stage" textAlignment="CENTER" wrappingWidth="62.0">
+               <font>
+                  <Font name="Century Gothic Bold" size="16.0" />
+               </font>
+            </Text>
+            
+            <!-- Rows and Seats -->
+            <!-- Row A -->
+            <Label layoutX="50.0" layoutY="120.0" text="A" textFill="#1C2A38">
+               <font>
+                  <Font name="Roboto Medium" size="16.0" />
                </font>
             </Label>
-            <Text fill="#3b4754" layoutX="23.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event:" wrappingWidth="46.581241607666016">
+            <Button fx:id="A1" layoutX="80.0" layoutY="110.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="1">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></Button>
+            <Button fx:id="A2" layoutX="130.0" layoutY="110.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="2">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets></Button>
+            <!-- Add more seats as required for Row A -->
+
+            <!-- Row B -->
+            <Label layoutX="50.0" layoutY="170.0" text="B" textFill="#1C2A38">
                <font>
-                  <Font name="Microsoft YaHei Light" size="14.0" />
+                  <Font name="Roboto Medium" size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="B1" layoutX="80.0" layoutY="169.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="1" />
+            <Button fx:id="B2" layoutX="130.0" layoutY="169.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="2" />
+            <!-- Add more seats as required for Row B -->
+
+            <!-- Legends -->
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#23B33B" height="20.0" layoutX="530.0" layoutY="280.0" strokeType="INSIDE" width="30.0" />
+            <Text fill="#1C2A38" layoutX="523.0" layoutY="318.0" text="Selected" wrappingWidth="60.0">
+               <font>
+                  <Font name="Roboto Medium" size="12.0" />
                </font>
             </Text>
-            <Text fx:id="eventName" fill="#3b4754" layoutX="72.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event Name" wrappingWidth="240.8034553527832">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#E40606" height="20.0" layoutX="600.0" layoutY="280.0" strokeType="INSIDE" width="30.0" />
+            <Text fill="#1C2A38" layoutX="589.0" layoutY="318.0" text="Unavailable" wrappingWidth="80.0">
                <font>
-                  <Font name="Microsoft YaHei Light" size="14.0" />
+                  <Font name="Roboto Medium" size="12.0" />
                </font>
             </Text>
-            <Text fx:id="totalTickets" fill="#3b4754" layoutX="72.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="XX" wrappingWidth="240.8034553527832">
+            
+            <!-- Confirm Button -->
+            <Button fx:id="confirmationButton" layoutX="592.0" layoutY="334.0" mnemonicParsing="false" onAction="#goToConfirmation" prefHeight="31.0" prefWidth="120.0" style="-fx-background-color: #FFEB3B; -fx-text-fill: #1C2A38;" text="CONFIRM">
                <font>
-                  <Font name="Microsoft YaHei Light" size="14.0" />
-               </font>
-            </Text>
-            <Text fx:id="totalPrice" fill="#3b4754" layoutX="72.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$0.00" wrappingWidth="240.8034553527832">
-               <font>
-                  <Font name="Microsoft YaHei Light" size="14.0" />
-               </font>
-            </Text>
-            <Button fx:id="confirmationBtn" layoutX="299.0" layoutY="357.0" mnemonicParsing="false" onAction="#goToConfirmation" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: #29323D;" text="CONFIRM" textFill="WHITE">
-               <font>
-                  <Font name="Microsoft YaHei Bold" size="12.0" />
+                  <Font name="Roboto Bold" size="16.0" />
                </font>
             </Button>
-            <Label fx:id="selectedSeats" layoutX="72.0" layoutY="361.0" maxHeight="-Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="221.0" style="-fx-background-color: #FFBD39;" text="XX" textFill="#3b4754" wrapText="true">
+            <Button fx:id="A3" layoutX="180.0" layoutY="111.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="3">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="A4" layoutX="230.0" layoutY="111.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="4">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="A5" layoutX="281.0" layoutY="111.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="5">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="A6" layoutX="331.0" layoutY="111.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="6">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="A7" layoutX="381.0" layoutY="112.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="7">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="A8" layoutX="431.0" layoutY="112.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="8">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="A9" layoutX="480.0" layoutY="112.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="9">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="A10" layoutX="530.0" layoutY="113.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="10">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="A11" disable="true" layoutX="580.0" layoutY="113.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #e40606;" text="11" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="A12" layoutX="630.0" layoutY="113.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="12">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="C1" layoutX="80.0" layoutY="226.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="1">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="C2" layoutX="130.0" layoutY="226.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="2">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="C3" layoutX="180.0" layoutY="227.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="3">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="C4" disable="true" layoutX="230.0" layoutY="227.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #e40606;" text="4" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="C5" layoutX="281.0" layoutY="227.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="5">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="C6" layoutX="331.0" layoutY="227.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="6">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="C7" layoutX="381.0" layoutY="228.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="7">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="C8" layoutX="431.0" layoutY="228.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="8">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="C9" layoutX="480.0" layoutY="228.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="9">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="C10" layoutX="530.0" layoutY="229.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="10">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="C11" layoutX="580.0" layoutY="229.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="11">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="C12" disable="true" layoutX="630.0" layoutY="229.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #e40606;" text="12" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="B3" layoutX="180.0" layoutY="169.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="3">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="B4" layoutX="230.0" layoutY="169.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="4">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="B5" layoutX="281.0" layoutY="169.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="5">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="B6" layoutX="331.0" layoutY="169.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="6">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="B7" disable="true" layoutX="381.0" layoutY="170.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #e40606;" text="7" textFill="WHITE">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="B8" layoutX="431.0" layoutY="170.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="8">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="B9" layoutX="480.0" layoutY="170.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="9">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="B10" layoutX="530.0" layoutY="171.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="10">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="B11" layoutX="580.0" layoutY="171.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="11">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Button fx:id="B12" layoutX="630.0" layoutY="171.0" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: #EDF0F4;" text="12">
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </Button>
+            <Label layoutX="52.0" layoutY="229.0" text="C" textFill="#1C2A38">
+               <font>
+                  <Font name="Roboto Medium" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="selectedSeats" layoutX="333.0" layoutY="283.0" maxHeight="-Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="126.0" style="-fx-background-color: #ffffff;" text="XX" textFill="#3b4754" wrapText="true">
                <font>
                   <Font name="Microsoft YaHei Light" size="14.0" />
                </font>
-            </Label>
+               </Label>
+            <Text fill="#1C2A38" layoutX="23.0" layoutY="294.0" text="Event : " wrappingWidth="56.0">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#1C2A38" layoutX="23.0" layoutY="326.0" text="Tickets :" wrappingWidth="56.0">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#1C2A38" layoutX="23.0" layoutY="359.0" text="Total :" wrappingWidth="56.0">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#1C2A38" layoutX="215.0" layoutY="297.0" text="Seats Selected :" wrappingWidth="111.0">
+               <font>
+                  <Font name="Century Gothic Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="totalTickets" fill="#757575" layoutX="81.0" layoutY="327.0" text="Tickets" wrappingWidth="300.0">
+               <font>
+                  <Font name="Roboto Medium" size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="totalPrice" fill="#757575" layoutX="81.0" layoutY="360.0" text="Total Price" wrappingWidth="300.0">
+               <font>
+                  <Font name="Roboto Medium" size="16.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </center>
