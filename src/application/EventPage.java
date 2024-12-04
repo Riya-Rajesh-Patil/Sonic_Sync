@@ -69,10 +69,7 @@ public class EventPage implements Initializable {
                     title.setText(data[0]);
                     description.setText(data[1]);
                     startDate.setText(data[3]);
-                    //endDate.setText(data[4]);
                     time.setText(data[5]);
-                    //age.setText(data[6]);
-                    //rating.setText(data[7]);
                 }
                 line = br.readLine();
             }

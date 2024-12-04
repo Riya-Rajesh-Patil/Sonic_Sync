@@ -21,7 +21,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-// public class which implements the interface Initializable
 public class EventBookingManagement implements Initializable {
 
     @FXML
@@ -35,7 +34,6 @@ public class EventBookingManagement implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // specifying how to populate the columns of the table
         status.setCellValueFactory(new PropertyValueFactory<BookingHistoryItem, String>("status"));
         firstName.setCellValueFactory(new PropertyValueFactory<BookingHistoryItem, String>("firstName"));
         lastName.setCellValueFactory(new PropertyValueFactory<BookingHistoryItem, String>("lastName"));
@@ -46,28 +44,24 @@ public class EventBookingManagement implements Initializable {
         vip.setCellValueFactory(new PropertyValueFactory<BookingHistoryItem, String>("vip"));
         idNumber.setCellValueFactory(new PropertyValueFactory<BookingHistoryItem, String>("idNumber"));
 
-        // Creates an 'ObservableList' of the object type 'BookingHistoryItem'
         ObservableList<BookingHistoryItem> list = FXCollections.observableArrayList();
 
-        // TRY-CATCH Block
         try {
-            // Creates FileReader and BufferedReader to read the file
             FileReader fr = new FileReader("bookings.txt");
             BufferedReader br = new BufferedReader(fr);
-            String line = br.readLine(); // Reads the first line of the file
-            while (line != null) { // WHILE loop to iterate through the lines of the file
-                String[] data = line.split(";"); // Assigns a semi-colon as the data delimiter
-                // Adds the object to the list
+            String line = br.readLine(); 
+            while (line != null) { 
+                String[] data = line.split(";"); 
                 list.add(new BookingHistoryItem(data[0], data[1], data[2], data[3], data[4],
                         data[5], data[6], data[7], data[8]));
-                line = br.readLine(); // Reads the next line
+                line = br.readLine(); 
             }
-            fr.close(); // Closes FileReader
+            fr.close(); 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        table.setItems(list); // Adds the list to the table
+        table.setItems(list); 
     }
 
     public void goBack(ActionEvent event) throws IOException {
@@ -83,7 +77,6 @@ public class EventBookingManagement implements Initializable {
     public void deleteBooking(ActionEvent event) throws IOException {
         Alert alert = new Alert(AlertType.CONFIRMATION, "Do you wish to delete this booking from view?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
-        // if the user clicks OK
         if (alert.getResult() == ButtonType.YES) {
             table.getItems().removeAll(table.getSelectionModel().getSelectedItem());
             alert.close();

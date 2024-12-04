@@ -60,9 +60,7 @@ public class EventManagement {
         ObservableList<String> obsList1 = FXCollections.observableArrayList("13:00", "14:00", "15:00", "16:00", "17:00",
                 "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "00:00", "01:00", "02:00", "03:00");
         ObservableList<String> obsList2 = FXCollections.observableArrayList("U", "PG", "12A", "15", "18", "R");
-        //eventAge.setItems(obsList2);
-        //eventAge.setValue("12A");
-        //newEventAge.setText("12A");
+        
         eventTime1.setItems(obsList1);
         eventTime2.setItems(obsList1);
         eventTime3.setItems(obsList1);
@@ -112,9 +110,6 @@ public class EventManagement {
                 case "eventTime3":
                     newEventTime3.setText(eventTime3.getValue().toString());
                     break;
-                /*case "eventAge":
-                    newEventAge.setText(eventAge.getValue().toString());
-                    break;*/
             }
         } catch (NullPointerException ex) {
             ex.getMessage();

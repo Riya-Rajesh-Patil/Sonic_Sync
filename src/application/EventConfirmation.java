@@ -50,7 +50,6 @@ public class EventConfirmation implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         selectedEventTitle.setText(Main.getSelectedEventTitle());
         email.setText(Login.getCurrentUser());
-        //screen.setText(EventBooking.screenNum);
         seats.setText(EventSeatBooking.userSeats);
 
         date = EventBooking.date;
@@ -63,7 +62,6 @@ public class EventConfirmation implements Initializable {
         child.setText(EventBooking.childTickets + "");
         senior.setText(EventBooking.seniorTickets + "");
 
-        // Checks if the user selected VIP seating.
         if (EventBooking.isVip) {
             isVip.setText("Yes");
             vipConf = "Yes";
@@ -107,19 +105,17 @@ public class EventConfirmation implements Initializable {
         }
     }
 
-    // Method 'emailConfirmation()' is executed when the user clicks on the 'EMAIL' button
     public void emailConfirmation(ActionEvent event) throws IOException {
-        // Outputs confirmation alert
+      
         Alert alert = new Alert(AlertType.CONFIRMATION, "Would you like a confirmation to be emailed to you?",
                 ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
 
-        // IF the user selects "yes" a booking confirmation email is sent
         if (alert.getResult() == ButtonType.YES) {
             EventSendEmail.sendEmail(Login.getCurrentUser(), "confirmation");
             alert.close();
         }
-        // ELSE the alert is closed
+
         else {
             alert.close();
             return;

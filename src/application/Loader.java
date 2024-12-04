@@ -12,7 +12,6 @@ public class Loader {
     private ProgressBar loadingBar;
 
     public void initialize() {
-        // Simulate the loading process with a Timeline
         Timeline timeline = new Timeline(
             new KeyFrame(Duration.ZERO, e -> loadingBar.setProgress(0)),
             new KeyFrame(Duration.seconds(2), e -> loadingBar.setProgress(0.3)),
@@ -20,7 +19,7 @@ public class Loader {
             new KeyFrame(Duration.seconds(6), e -> loadingBar.setProgress(1.0))
         );
 
-        timeline.setOnFinished(event -> Main.switchToLogin()); // Switch to login screen after loading
+        timeline.setOnFinished(event -> Main.switchToLogin());
         timeline.play();
     }
 }

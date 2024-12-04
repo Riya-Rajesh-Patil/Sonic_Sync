@@ -28,7 +28,6 @@ public class Dashboard {
     @FXML
     private ImageView goComedies;
 
-    // Method to handle clicking on the "Go to Concerts" image
     @FXML
     private void goConcerts(MouseEvent event) {
         try {
@@ -39,7 +38,6 @@ public class Dashboard {
         }
     }
 
-    // Method to handle clicking on the "Go to Movies" image
     @FXML
     private void goMovies(MouseEvent event) {
         try {
@@ -50,7 +48,6 @@ public class Dashboard {
         }
     }
 
-    // Method to handle clicking on the "Go to Stand-Up Comedies" image
     @FXML
     private void goComedies(MouseEvent event) {
         try {
@@ -61,11 +58,9 @@ public class Dashboard {
         }
     }
 
-    // Method to handle the "Log Out" button
     @FXML
     private void userLogout(ActionEvent event) {
         try {
-            // Clear user session and navigate to login page
         	Main m = new Main();
             m.changeScene("Login.fxml");
         } catch (Exception e) {
@@ -73,7 +68,6 @@ public class Dashboard {
         }
     }
 
-    // Method to handle the "Go Home" button
     @FXML
     private void goHome(ActionEvent event) {
         try {
