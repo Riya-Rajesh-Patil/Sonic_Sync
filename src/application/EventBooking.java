@@ -42,16 +42,16 @@ public class EventBooking {
     private ComboBox<String> adultCombo, childCombo, seniorCombo, eventTimes;
     @FXML
     private Text selectedEventTitle, totalPrice;
+    //@FXML
+    //private TextField screen;
     @FXML
-    private TextField screen;
-    @FXML
-    private CheckBox checkbox;
+    private CheckBox vipUpgrade;
     @FXML
     private ImageView selectedEventPoster;
 
     public static double total = 0.00;
     public static int adultTickets = 0, childTickets = 0, seniorTickets = 0;
-    private double adultPrice = 8.50, childPrice = 5.00, seniorPrice = 7.50, vip = 2.00;
+    private double adultPrice = 15.50, childPrice = 10.00, seniorPrice = 12.50, vip = 2.00;
     public static boolean isVip = false;
     public static String screenNum = "", date = "", time = "";
 
@@ -80,8 +80,8 @@ public class EventBooking {
             // Finds data associated with the chosen event and assigns the event details to corresponding variables
             if (data[0].equals(selectedEvent)) {
                 selectedEventTitle.setText(data[0]);
-                age = data[8];
-                times = FXCollections.observableArrayList(data[5], data[6], data[7]);
+               // age = data[8];
+                times = FXCollections.observableArrayList(data[5]);
                 endDate = data[4];
             }
             line = br.readLine(); // Reads the next line
@@ -90,7 +90,7 @@ public class EventBooking {
         // Formats the DatePicker so the user cannot pick a date before today's date or after the end date
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate today = LocalDate.now();
-        LocalDate end = LocalDate.parse(endDate, formatter);
+        //LocalDate end = LocalDate.parse(endDate, formatter);
         final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
             @Override
             public DateCell call(final DatePicker selectedDate) {
@@ -99,7 +99,7 @@ public class EventBooking {
                     public void updateItem(LocalDate item, boolean empty) {
                         super.updateItem(item, empty);
 
-                        if (item.isBefore(today) || item.isAfter(end)) {
+                        if (item.isBefore(today)) {
                             setDisable(true);
                             setStyle("-fx-background-color: #ffc0cb;");
                         }
@@ -125,13 +125,13 @@ public class EventBooking {
         int max = 3;
         int screenNo = (int) Math.floor(Math.random() * (max - min + 1) + min);
         screenNum = Integer.toString(screenNo);
-        screen.setText(screenNum);
+       // screen.setText(screenNum);
 
         String path = "./Images/eventImages/";
         imgFile = new File(path + selectedEvent + ".png");
         Image img = SwingFXUtils.toFXImage(ImageIO.read(imgFile), null);
         selectedEventPoster.setImage(img);
-        checkbox.setIndeterminate(true);
+        vipUpgrade.setIndeterminate(true);
     }
 
     public void updateTotal(ActionEvent e) throws NumberFormatException {
@@ -139,7 +139,7 @@ public class EventBooking {
         childTickets = Integer.parseInt((String) childCombo.getValue());
         seniorTickets = Integer.parseInt((String) seniorCombo.getValue());
         total = (adultTickets * adultPrice) + (childTickets * childPrice) + (seniorTickets * seniorPrice);
-        if (checkbox.isSelected()) {
+        if (vipUpgrade.isSelected()) {
             total = total + vip;
             isVip = true;
         }
@@ -166,7 +166,7 @@ public class EventBooking {
             time = eventTimes.getValue().toString();
 
             Main m = new Main();
-            m.changeScene("Seat Booking.fxml");
+            m.changeScene("Event Seat Booking.fxml");
         }
     }
 

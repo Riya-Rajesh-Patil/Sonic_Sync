@@ -1,5 +1,6 @@
 package application;
 
+import java.awt.Label;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -49,7 +50,7 @@ public class EventConfirmation implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         selectedEventTitle.setText(Main.getSelectedEventTitle());
         email.setText(Login.getCurrentUser());
-        screen.setText(EventBooking.screenNum);
+        //screen.setText(EventBooking.screenNum);
         seats.setText(EventSeatBooking.userSeats);
 
         date = EventBooking.date;

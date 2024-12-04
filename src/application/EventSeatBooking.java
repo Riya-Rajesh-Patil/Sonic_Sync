@@ -18,10 +18,10 @@ public class EventSeatBooking {
     @FXML
     private Button backButton, confirmationButton;
     @FXML
-    private Button A1, A2, A3, A4, A5, A6, A7, A8, B1, B2, B3, B4, B5, B6, B7, B8, C1, C2, C3, C4, C5, C6, C7, C8;
+    private Button A1, A2, A3, A4, A5, A6, A7, A8,A9,A10,A11,A12, B1, B2, B3, B4, B5, B6, B7, B8,B9,B10,B11,B12, C1, C2, C3, C4, C5, C6, C7, C8,C9,C10,C11,C12;
 
-    private Button[] seats = new Button[24];
-    public static boolean[] eventBookings = new boolean[24];
+    private Button[] seats = new Button[36];
+    public static boolean[] eventBookings = new boolean[36];
     public static boolean[] booked;
 
     private int maxSeats = (EventBooking.adultTickets + EventBooking.childTickets + EventBooking.seniorTickets);
@@ -105,9 +105,9 @@ public class EventSeatBooking {
         if (btn.getId().startsWith("A")) {
             seat = (Integer.parseInt(btn.getId().substring(1))) - 1;
         } else if (btn.getId().startsWith("B")) {
-            seat = (Integer.parseInt(btn.getId().substring(1))) + 7;
+            seat = (Integer.parseInt(btn.getId().substring(1))) + 11;
         } else if (btn.getId().startsWith("C")) {
-            seat = (Integer.parseInt(btn.getId().substring(1))) + 15;
+            seat = (Integer.parseInt(btn.getId().substring(1))) + 23;
         }
         booked[seat] = selected;
         String btnId = btn.getId();
@@ -158,24 +158,36 @@ public class EventSeatBooking {
         seats[5] = A6;
         seats[6] = A7;
         seats[7] = A8;
+        seats[8] = A9;
+        seats[9] = A10;
+        seats[10] = A11;
+        seats[11] = A12;
 
-        seats[8] = B1;
-        seats[9] = B2;
-        seats[10] = B3;
-        seats[11] = B4;
-        seats[12] = B5;
-        seats[13] = B6;
-        seats[14] = B7;
-        seats[15] = B8;
+        seats[12] = B1;
+        seats[13] = B2;
+        seats[14] = B3;
+        seats[15] = B4;
+        seats[16] = B5;
+        seats[17] = B6;
+        seats[18] = B7;
+        seats[19] = B8;
+        seats[20] = A9;
+        seats[21] = A10;
+        seats[22] = A11;
+        seats[23] = A12;
 
-        seats[16] = C1;
-        seats[17] = C2;
-        seats[18] = C3;
-        seats[19] = C4;
-        seats[20] = C5;
-        seats[21] = C6;
-        seats[22] = C7;
-        seats[23] = C8;
+        seats[24] = C1;
+        seats[25] = C2;
+        seats[26] = C3;
+        seats[27] = C4;
+        seats[28] = C5;
+        seats[29] = C6;
+        seats[30] = C7;
+        seats[31] = C8;
+        seats[32] = A9;
+        seats[33] = A10;
+        seats[34] = A11;
+        seats[35] = A12;
     }
 
     public void goBack(ActionEvent event) throws IOException {
