@@ -2,10 +2,8 @@ package application;
 
 public class BookingHistoryItem {
 
-    // Initializes the variables
     private String status, firstName, lastName, event, date, time, seats, vip, idNumber;
 
-    // Setter
     public BookingHistoryItem(String status, String firstName, String lastName, String event, String date, String time, String seats, String idNumber, String vip) {
 
         this.status = status;
@@ -19,47 +17,38 @@ public class BookingHistoryItem {
         this.idNumber = idNumber;
     }
 
-    // Getter
     public String getStatus() {
         return status;
     }
 
-    // Getter
     public String getFirstName() {
         return firstName;
     }
 
-    // Getter
     public String getLastName() {
         return lastName;
     }
 
-    // Getter
     public String getEvent() {
         return event;
     }
 
-    // Getter
     public String getDate() {
         return date;
     }
 
-    // Getter
     public String getTime() {
         return time;
     }
 
-    // Getter
     public String getSeats() {
         return seats;
     }
-
-    // Getter
+ 
     public String getVip() {
         return vip;
     }
 
-    // Getter
     public String getIdNumber() {
         return idNumber;
     }

@@ -25,17 +25,13 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.BarcodeQRCode;
 import com.itextpdf.text.pdf.PdfWriter;
 
-public class EventSendEmail { // Controller class that sends an email to the user
+public class EventSendEmail {
 
-    // Method 'sendEmail()' creates a booking confirmation email and sends it to the user
     static void sendEmail(String recipient, String type) {
 
-        // Initializes 'username' and 'password' variables that cannot be reassigned
         final String username = "sonicsyncevents@gmail.com";
-        final String password = "SonicSync@2024";
+        final String password = "uzol rdnf taer midw";
 
-        /* JavaMail Properties is used to set in the session objects and to create the session object.
-         * SMTP - Simple Mail Transfer Protocol is used */
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
@@ -43,7 +39,6 @@ public class EventSendEmail { // Controller class that sends an email to the use
         props.put("mail.smtp.port", "587");
         props.put("mail.smtp.ssl.protocols", "TLSv1.2");
 
-        // Creates 'Session' object that provides access to JavaMail Protocols
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
@@ -52,7 +47,6 @@ public class EventSendEmail { // Controller class that sends an email to the use
 
         ByteArrayOutputStream outputStream = null;
 
-        // Store the message content in the 'String' variable 'content'
         String content = "Hello " + EventConfirmation.name + ",\n\n" +
                 "Thank you for choosing our event booking system. Your booking for the event " + Main.getSelectedEventTitle() +
                 " has been confirmed. Please, keep this email with the PDF receipt as proof of your booking.\n"
@@ -64,7 +58,7 @@ public class EventSendEmail { // Controller class that sends an email to the use
             textBodyPart.setText(content);
 
             outputStream = new ByteArrayOutputStream();
-            writePdf(outputStream); // Calls the 'writePdf()' method
+            writePdf(outputStream);
             byte[] bytes = outputStream.toByteArray();
 
             DataSource dataSource = new ByteArrayDataSource(bytes, "application/pdf");
@@ -101,7 +95,6 @@ public class EventSendEmail { // Controller class that sends an email to the use
         }
     }
 
-    // Method 'writePdf' creates the 'BookingConfirmation.pdf' to be emailed to the user
     public static void writePdf(OutputStream outputStream) throws Exception {
         Font title = FontFactory.getFont(FontFactory.HELVETICA, 36f, Font.BOLD);
         Font subtitle = FontFactory.getFont(FontFactory.HELVETICA, 16f, Font.BOLD);
@@ -129,6 +122,7 @@ public class EventSendEmail { // Controller class that sends an email to the use
                 "Seats: " + EventSeatBooking.userSeats + "\n" +
                 "VIP: " + EventConfirmation.vipConf + "\n\n" +
                 "Total Payment: $" + String.format("%.2f", EventBooking.total) + "\n\n"));
+        		document.add(paragraph);
 
         BarcodeQRCode barcodeQRCode = new BarcodeQRCode("Valid Booking - " + EventConfirmation.bookingId, 1000, 1000, null);
         Image codeQrImage = barcodeQRCode.getImage();
