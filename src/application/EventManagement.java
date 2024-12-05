@@ -32,11 +32,11 @@ public class EventManagement {
     private File selectedImage;
 
     @FXML
-    private Button backButton, homeButton, uploadImageButton, viewEventsButton, addEventButton;
+    private Button backBtn, homeBtn, uploadImageButton, viewEventsButton, addEventButton;
     @FXML
-    private Text newEventTitle, newEventDescription, newEventTime1, newEventTime2, newEventTime3, newEventAge, newEventRating;
+    private Text neweventTitle, neweventDescription, neweventTime1, neweventTime2, neweventTime3, neweventAge, neweventRating;
     @FXML
-    private Label newEventStartDate, newEventEndDate;
+    private Label neweventStartDate, neweventEndDate;
     @FXML
     private TextArea eventDescription;
     @FXML
@@ -46,7 +46,7 @@ public class EventManagement {
     @FXML
     private ComboBox<String> eventTime1, eventTime2, eventTime3, eventAge;
     @FXML
-    private ImageView uploadedEventPoster;
+    private ImageView uploadedeventPoster;
 
     LinkedList<String> titles = Main.eventTitles;
     LinkedList<String> startDates = Main.eventStartDates;
@@ -60,26 +60,30 @@ public class EventManagement {
         ObservableList<String> obsList1 = FXCollections.observableArrayList("13:00", "14:00", "15:00", "16:00", "17:00",
                 "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "00:00", "01:00", "02:00", "03:00");
         ObservableList<String> obsList2 = FXCollections.observableArrayList("U", "PG", "12A", "15", "18", "R");
-        
+        eventAge.setItems(obsList2);
+        //eventAge.setValue("12A");
+        //newEventAge.setText("12A");
         eventTime1.setItems(obsList1);
         eventTime2.setItems(obsList1);
         eventTime3.setItems(obsList1);
         eventTime1.setValue("21:00");
-        newEventTime1.setText("21:00");
+        neweventTime1.setText("21:00");
         eventStartDate.setValue(LocalDate.now());
         LocalDate startDate = eventStartDate.getValue();
         String startDateFormatted = startDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        newEventStartDate.setText(startDateFormatted);
+        if (neweventStartDate != null) {
+            neweventStartDate.setText(startDateFormatted);
+        }
     }
 
     public void goBack(ActionEvent event) throws IOException {
         Main m = new Main();
-        m.changeScene("Organizer Home.fxml");
+        m.changeScene("Organizer Home Page.fxml");
     }
 
     public void goHome(ActionEvent event) throws IOException {
         Main m = new Main();
-        m.changeScene("Organizer Home.fxml");
+        m.changeScene("Organizer Home Page.fxml");
     }
 
     public void goToViewEvents(ActionEvent event) throws IOException {
@@ -94,22 +98,27 @@ public class EventManagement {
                 case "eventStartDate":
                     LocalDate startDate = eventStartDate.getValue();
                     String startDateFormatted = startDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                    newEventStartDate.setText(startDateFormatted);
+                    if (neweventStartDate != null) {
+                        neweventStartDate.setText(startDateFormatted);
+                    }
                     break;
                 case "eventEndDate":
                     LocalDate endDate = eventEndDate.getValue();
                     String endDateFormatted = endDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                    newEventEndDate.setText(endDateFormatted);
+                    neweventEndDate.setText(endDateFormatted);
                     break;
                 case "eventTime1":
-                    newEventTime1.setText(eventTime1.getValue().toString());
+                    neweventTime1.setText(eventTime1.getValue().toString());
                     break;
                 case "eventTime2":
-                    newEventTime2.setText(eventTime2.getValue().toString());
+                    neweventTime2.setText(eventTime2.getValue().toString());
                     break;
                 case "eventTime3":
-                    newEventTime3.setText(eventTime3.getValue().toString());
+                    neweventTime3.setText(eventTime3.getValue().toString());
                     break;
+                /*case "eventAge":
+                    newEventAge.setText(eventAge.getValue().toString());
+                    break;*/
             }
         } catch (NullPointerException ex) {
             ex.getMessage();
@@ -144,13 +153,13 @@ public class EventManagement {
 
         switch (((Node) e.getSource()).getId()) {
             case "eventTitle":
-                newEventTitle.setText(eventTitle.getText());
+                neweventTitle.setText(eventTitle.getText());
                 break;
             case "eventDescription":
-                newEventDescription.setText(eventDescription.getText());
+                neweventDescription.setText(eventDescription.getText());
                 break;
             case "eventRating":
-                newEventRating.setText(eventRating.getText() + "/10");
+                neweventRating.setText(eventRating.getText() + "/10");
                 break;
         }
     }
@@ -171,23 +180,23 @@ public class EventManagement {
                 }
             } else {
                 Image img = SwingFXUtils.toFXImage(ImageIO.read(selectedImage), null);
-                uploadedEventPoster.setImage(img);
+                uploadedeventPoster.setImage(img);
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    @SuppressWarnings("unchecked")
     @FXML
     public void storeEventInfo(ActionEvent event) throws ParseException {
         try {
             validateEventInput();
 
             FileWriter fw = new FileWriter("events.txt", true);
-            fw.write(newEventTitle.getText() + ";" + newEventDescription.getText() + ";" + eventTrailer.getText() + ";" +
-                     newEventStartDate.getText() + ";" + newEventEndDate.getText() + ";" + newEventTime1.getText() + ";" +
-                     newEventTime2.getText() + ";" + newEventTime3.getText() + ";" +
-                     newEventRating.getText() + "\n");
+            fw.write(neweventTitle.getText() + ";" + neweventDescription.getText() + ";" + eventTrailer.getText() + ";" +
+                     neweventStartDate.getText() + ";" + neweventEndDate.getText() + ";" + neweventTime1.getText() + ";" +
+                     neweventTime2.getText() + ";" + neweventTime3.getText() + ";" +
+                     neweventRating.getText() + "\n");
             fw.close();
 
             String folderPath = "./Images/eventImages";
