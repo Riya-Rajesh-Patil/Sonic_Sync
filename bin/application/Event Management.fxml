@@ -33,14 +33,12 @@
                <font>
                   <Font name="Microsoft YaHei Bold" size="14.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Images/home_icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </Button>
+            <ImageView fitHeight="39.0" fitWidth="43.0" layoutX="625.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/home_icon.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </top>
