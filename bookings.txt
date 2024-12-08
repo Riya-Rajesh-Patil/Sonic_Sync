@@ -9,3 +9,5 @@ booked;Ritvik;Saxena;Boris Brejcha;04/12/2024;18:00;C3, C5;Yes;EVENT2642
 booked;Ritvik;Saxena;Boris Brejcha;04/12/2024;18:00;C8;Yes;EVENT1109
 booked;Ritvik;Saxena;Boris Brejcha;04/12/2024;18:00;C7;No;EVENT9664
 booked;Ritvik;Saxena;Boris Brejcha;04/12/2024;18:00;A3, A6;No;EVENT4849
+booked;Riya;Patil;Boris Brejcha;04/12/2024;18:00;A3, B1;Yes;EVENT2747
+booked;Riya;Patil;Boris Brejcha;04/12/2024;18:00;A2, B1;Yes;EVENT5811
